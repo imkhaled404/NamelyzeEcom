@@ -1,0 +1,195 @@
+@{
+    ViewData["Title"] = "Add Product";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Add New Product</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="/Admin/Dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item"><a href="/Admin/Products">Products</a></li>
+                <li class="breadcrumb-item active">Add Product</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="d-flex gap-2">
+        <a href="/Admin/Products" class="btn btn-white border shadow-sm btn-sm px-3">Cancel</a>
+        <button type="submit" form="productForm" class="btn btn-primary shadow-sm btn-sm px-3"><i class="fas fa-save me-2"></i>Save Product</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-header bg-white p-0 border-bottom">
+                <!-- Navigation Tabs -->
+                <ul class="nav nav-tabs border-0" id="productTabs" role="tablist">
+                    <li class="nav-item">
+                        <button class="nav-link active px-4 py-3 fw-medium" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab"><i class="fas fa-info-circle me-2"></i>Basic Information</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link px-4 py-3 fw-medium" id="pricing-tab" data-bs-toggle="tab" data-bs-target="#pricing" type="button" role="tab"><i class="fas fa-tag me-2"></i>Pricing</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link px-4 py-3 fw-medium" id="inventory-tab" data-bs-toggle="tab" data-bs-target="#inventory" type="button" role="tab"><i class="fas fa-warehouse me-2"></i>Inventory</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link px-4 py-3 fw-medium" id="images-tab" data-bs-toggle="tab" data-bs-target="#images" type="button" role="tab"><i class="fas fa-images me-2"></i>Images</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link px-4 py-3 fw-medium" id="seo-tab" data-bs-toggle="tab" data-bs-target="#seo" type="button" role="tab"><i class="fas fa-globe me-2"></i>SEO</button>
+                    </li>
+                    <li class="nav-item">
+                        <button class="nav-link px-4 py-3 fw-medium" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab"><i class="fas fa-file-alt me-2"></i>Description</button>
+                    </li>
+                </ul>
+            </div>
+            <div class="card-body p-4 p-lg-5">
+                <form id="productForm">
+                    <div class="tab-content" id="productTabsContent">
+                        <!-- ... other tabs ... -->
+
+                        <!-- Basic Info Tab -->
+                        <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-8">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Product Name *</label>
+                                        <input type="text" class="form-control" name="Name" placeholder="Enter product name" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Description</label>
+                                        <textarea class="form-control" name="Description" rows="5" placeholder="Detailed product description..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Category *</label>
+                                        <select class="form-select" name="CategoryId" required>
+                                            <option value="">Select Category</option>
+                                            <option value="1">Gadgets</option>
+                                            <option value="2">Home Appliances</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">Brand</label>
+                                        <select class="form-select" name="BrandId">
+                                            <option value="">Select Brand</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label fw-bold">SKU *</label>
+                                        <input type="text" class="form-control" name="SKU" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pricing Tab -->
+                        <div class="tab-pane fade" id="pricing" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Purchase Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">৳</span>
+                                        <input type="number" class="form-control" name="PurchasePrice">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Regular Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">৳</span>
+                                        <input type="number" class="form-control" name="RegularPrice">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-bold">Sale Price</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">৳</span>
+                                        <input type="number" class="form-control" name="SalePrice">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Inventory Tab -->
+                        <div class="tab-pane fade" id="inventory" role="tabpanel">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Current Stock</label>
+                                    <input type="number" class="form-control" name="CurrentStock" value="0">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Minimum Stock Alert</label>
+                                    <input type="number" class="form-control" name="MinimumStock" value="5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Images Tab -->
+                        <div class="tab-pane fade" id="images" role="tabpanel">
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Featured Image</label>
+                                <div class="border rounded-4 p-5 text-center bg-light cursor-pointer" onclick="alert('Image upload trigger')">
+                                    <i class="fas fa-cloud-upload-alt fs-1 text-muted mb-3"></i>
+                                    <p class="mb-0">Drag & Drop or Click to Upload</p>
+                                    <span class="text-muted small">Max size: 2MB | Suggested: 800x800px</span>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="form-label fw-bold">Gallery Images</label>
+                                <div class="row g-2">
+                                    <div class="col-auto">
+                                        <div class="border rounded-3 p-3 bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px;">
+                                            <i class="fas fa-plus text-muted"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SEO Tab -->
+                        <div class="tab-pane fade" id="seo" role="tabpanel">
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Meta Title</label>
+                                <input type="text" class="form-control" name="MetaTitle">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Meta Keywords</label>
+                                <input type="text" class="form-control" name="MetaKeywords">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label fw-bold">Meta Description</label>
+                                <textarea class="form-control" name="MetaDescription" rows="3"></textarea>
+                            </div>
+                        <!-- SEO Tab ... -->
+
+                        <!-- Description Tab -->
+                        <div class="tab-pane fade" id="description" role="tabpanel">
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Short Description</label>
+                                <textarea class="form-control" name="ShortDescription" rows="3"></textarea>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Full Description</label>
+                                <div class="border rounded-4 p-4 bg-light text-center">
+                                    <p class="text-muted"><i class="fas fa-edit me-2"></i>Rich Text Editor Placeholder (CKEditor/TinyMCE)</p>
+                                    <textarea class="form-control" name="FullDescription" rows="10"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .nav-tabs .nav-link { color: #6c757d; border: 0; border-bottom: 2px solid transparent; }
+    .nav-tabs .nav-link.active { color: var(--primary); border-bottom-color: var(--primary); background: transparent; }
+    .cursor-pointer { cursor: pointer; }
+</style>

@@ -1,0 +1,8 @@
+@{ ViewData["Title"] = "Inventory"; ViewData["PageId"] = "inventory"; Layout = "_AdminLayout"; }
+<div class="page-header"><div><h4><i class="fas fa-warehouse me-2" style="color:var(--primary)"></i>Inventory Management</h4><p>Update stock levels and view alerts</p></div></div>
+<div class="a-table-wrap"><div class="table-responsive"><table class="table a-table w-100"><thead><tr><th>Product</th><th>SKU</th><th>Stock</th><th>Status</th><th>Actions</th></tr></thead><tbody id="invTbody"></tbody></table></div></div>
+@section Scripts {
+<script>
+$(function() { AdminBase.Crud.getList('/products', (err, data) => { var b = $('#invTbody'); b.empty(); data.forEach(p => b.append(`<tr><td><strong>${p.name}</strong></td><td>${p.sku||'—'}</td><td>${p.currentStock}</td><td>${p.currentStock<10?'<span class="s-badge pending">Low</span>':'<span class="s-badge active">In Stock</span>'}</td><td><button class="a-btn edit"><i class="fas fa-plus"></i></button></td></tr>`)); }); });
+</script>
+}

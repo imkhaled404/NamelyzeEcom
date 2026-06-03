@@ -1,0 +1,139 @@
+@{
+    ViewData["Title"] = "General Settings";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Settings</h3>
+        <p class="text-muted small">Configure your store's global preferences and integrations.</p>
+    </div>
+    <button type="submit" form="settingsForm" class="btn btn-primary shadow-sm btn-sm px-4"> Save All Changes</button>
+</div>
+
+<div class="row">
+    <div class="col-lg-3">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+            <div class="list-group list-group-flush small">
+                <a href="#general" class="list-group-item list-group-item-action active py-3 px-4" data-bs-toggle="tab"><i class="fas fa-cog me-3"></i>General Settings</a>
+                <a href="#appearance" class="list-group-item list-group-item-action py-3 px-4" data-bs-toggle="tab"><i class="fas fa-paint-brush me-3"></i>Appearance</a>
+                <a href="#shipping" class="list-group-item list-group-item-action py-3 px-4" data-bs-toggle="tab"><i class="fas fa-truck me-3"></i>Shipping & Delivery</a>
+                <a href="#courier" class="list-group-item list-group-item-action py-3 px-4" data-bs-toggle="tab"><i class="fas fa-rocket me-3"></i>Courier API API</a>
+                <a href="#payment" class="list-group-item list-group-item-action py-3 px-4" data-bs-toggle="tab"><i class="fas fa-credit-card me-3"></i>Payment Gateways</a>
+                <a href="#sms" class="list-group-item list-group-item-action py-3 px-4" data-bs-toggle="tab"><i class="fas fa-comment-dots me-3"></i>SMS Notifications</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-9">
+        <form id="settingsForm">
+            <div class="tab-content border-0">
+                <!-- General Section -->
+                <div class="tab-pane fade show active" id="general">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                        <h5 class="fw-bold mb-4">Store Identity</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Store Name</label>
+                                <input type="text" class="form-control" value="NamelyzeEcom">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Contact Email</label>
+                                <input type="email" class="form-control" value="info@namelyze.com">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Contact Phone</label>
+                                <input type="text" class="form-control" value="01804193796">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">Store Address</label>
+                                <textarea class="form-control" rows="3">Dhaka, Bangladesh</textarea>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-5">
+                        <h5 class="fw-bold mb-4">Social Links</h5>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Facebook Page URL</label>
+                                <input type="text" class="form-control" placeholder="https://facebook.com/...">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">WhatsApp Number</label>
+                                <input type="text" class="form-control" value="8801804193796">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Settings -->
+                <div class="tab-pane fade" id="payment">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                        <h5 class="fw-bold mb-4">Payment Gateways</h5>
+                        <div class="row g-4">
+                            <div class="col-md-6 border-bottom pb-4 mb-2">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h6 class="fw-bold mb-0">bKash</h6>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox" checked></div>
+                                </div>
+                                <input type="text" class="form-control mb-2" placeholder="App Key">
+                                <input type="text" class="form-control" placeholder="App Secret">
+                            </div>
+                            <div class="col-md-6 border-bottom pb-4 mb-2">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <h6 class="fw-bold mb-0">Nagad</h6>
+                                    <div class="form-check form-switch"><input class="form-check-input" type="checkbox"></div>
+                                </div>
+                                <input type="text" class="form-control mb-2" placeholder="Merchant ID">
+                            </div>
+                            <div class="col-md-12">
+                                <div class="bg-light p-4 rounded-4 border">
+                                    <h6 class="fw-bold mb-3"><i class="fas fa-credit-card me-2"></i>SSLCommerz (Aggregator)</h6>
+                                    <div class="row g-3">
+                                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Store ID"></div>
+                                        <div class="col-md-6"><input type="text" class="form-control" placeholder="Store Password"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Courier Settings -->
+                <div class="tab-pane fade" id="shipping">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                        <h5 class="fw-bold mb-4">Shipping Zones</h5>
+                        <div class="table-responsive">
+                            <table class="table small text-muted">
+                                <thead><tr><th>Zone</th><th>Delivery Charge</th><th>Action</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Inside Dhaka</td><td>৳ 60</td><td><button class="btn btn-sm btn-light border"><i class="fas fa-edit"></i></button></td></tr>
+                                    <tr><td>Outside Dhaka</td><td>৳ 120</td><td><button class="btn btn-sm btn-light border"><i class="fas fa-edit"></i></button></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SMS Settings -->
+                <div class="tab-pane fade" id="sms">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                        <h5 class="fw-bold mb-4">SMS Gateway (BulkSMSBD / Infobip)</h5>
+                        <div class="row g-3">
+                            <div class="col-md-12">
+                                <label class="form-label fw-bold">API Key / Token</label>
+                                <input type="text" class="form-control" placeholder="Enter API Key">
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="orderSms" checked>
+                                    <label class="form-check-label" for="orderSms">Send SMS on Order Confirmation</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>

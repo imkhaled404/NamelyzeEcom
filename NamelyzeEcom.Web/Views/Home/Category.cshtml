@@ -1,0 +1,183 @@
+@{
+    Layout = "_Layout";
+    var slug = ViewContext.RouteData.Values["slug"]?.ToString() ?? "";
+    ViewData["Title"] = "Category — NamelyzeEcom";
+}
+
+<div class="container py-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" id="cat-name">Category</li>
+        </ol>
+    </nav>
+
+    <div class="row">
+        <!-- Sidebar Filters -->
+        <div class="col-lg-3 col-md-4 mb-4">
+            <div class="card border-0 shadow-sm rounded-3">
+                <div class="card-header bg-white border-bottom fw-semibold py-3">Filters</div>
+                <div class="card-body">
+                    <label class="form-label fw-semibold small text-muted">PRICE RANGE</label>
+                    <div class="d-flex gap-2 mb-3">
+                        <input type="number" class="form-control form-control-sm" id="priceMin" placeholder="Min" />
+                        <input type="number" class="form-control form-control-sm" id="priceMax" placeholder="Max" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold small text-muted">SORT BY</label>
+                        <select class="form-select form-select-sm" id="sortBy">
+                            <option value="default">Default</option>
+                            <option value="price_asc">Price: Low to High</option>
+                            <option value="price_desc">Price: High to Low</option>
+                            <option value="newest">Newest First</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary btn-sm w-100" onclick="applyFilters()">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="col-lg-9 col-md-8">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5 class="mb-0 fw-bold" id="cat-title">Loading products...</h5>
+                <span class="text-muted small" id="product-count"></span>
+            </div>
+
+            <div id="products-container" class="row g-3">
+                <!-- Skeleton Loading -->
+                @for (int i = 0; i < 6; i++) {
+                    <div class="col-xl-4 col-md-6 skeleton-card">
+                        <div class="card border-0 shadow-sm rounded-3 placeholder-glow">
+                            <div class="placeholder ratio ratio-1x1 rounded-top" style="background:#eee;"></div>
+                            <div class="card-body">
+                                <div class="placeholder col-8 mb-2"></div>
+                                <div class="placeholder col-5"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+            <div id="no-products" class="text-center py-5 d-none">
+                <i class="bi bi-box-seam text-muted" style="font-size:3rem;"></i>
+                <p class="mt-2 text-muted">No products found in this category.</p>
+                <a href="/Shop" class="btn btn-outline-primary mt-2">Browse All Products</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    const categorySlug = '@Html.Raw(slug)';
+    let allProducts = [];
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        // Load categories to get category name
+        try {
+            const catRes = await fetch('/api/support/categories');
+            const cats = await catRes.json();
+            const category = cats.find(c => c.slug === categorySlug);
+            if (category) {
+                document.getElementById('cat-name').textContent = category.name;
+                document.getElementById('cat-title').textContent = category.name;
+                document.title = category.name + ' — NamelyzeEcom';
+                if (category.id) {
+                    await loadProductsByCategory(category.id);
+                }
+            } else {
+                await loadAllProducts();
+            }
+        } catch (e) {
+            await loadAllProducts();
+        }
+    });
+
+    async function loadProductsByCategory(categoryId) {
+        try {
+            const res = await fetch(`/api/products?pageSize=50`);
+            const data = await res.json();
+            allProducts = (data.data || data || []).filter(p => p.categoryId === categoryId);
+            renderProducts(allProducts);
+        } catch(e) {
+            renderProducts([]);
+        }
+    }
+
+    async function loadAllProducts() {
+        try {
+            const res = await fetch('/api/products?pageSize=50');
+            const data = await res.json();
+            allProducts = data.data || data || [];
+            document.getElementById('cat-title').textContent = 'All Products';
+            renderProducts(allProducts);
+        } catch(e) { renderProducts([]); }
+    }
+
+    function renderProducts(products) {
+        const container = document.getElementById('products-container');
+        const countEl = document.getElementById('product-count');
+        const noProducts = document.getElementById('no-products');
+        
+        container.innerHTML = '';
+        countEl.textContent = products.length + ' products';
+
+        if (!products.length) {
+            noProducts.classList.remove('d-none');
+            return;
+        }
+        noProducts.classList.add('d-none');
+
+        products.forEach(p => {
+            const price = p.salePrice ?? p.regularPrice ?? 0;
+            const old = p.regularPrice ?? 0;
+            const discount = old > price ? Math.round((1 - price/old)*100) : 0;
+            const img = p.mainImageUrl || '';
+            const imgTag = img ? `<img src="${img}" class="card-img-top" style="height:200px;object-fit:cover;" alt="${p.name}" onerror="this.src='https://placehold.co/300x200?text=No+Image'">` : `<div class="bg-light d-flex align-items-center justify-content-center" style="height:200px;"><i class="bi bi-image text-muted fs-1"></i></div>`;
+
+            container.insertAdjacentHTML('beforeend', `
+                <div class="col-xl-4 col-md-6">
+                    <div class="card border-0 shadow-sm rounded-3 h-100 hover-lift">
+                        <div class="position-relative overflow-hidden rounded-top">
+                            ${imgTag}
+                            ${discount > 0 ? `<span class="badge bg-danger position-absolute top-0 end-0 m-2">-${discount}%</span>` : ''}
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title fw-semibold mb-1" style="font-size:0.9rem;">${p.name}</h6>
+                            <div class="mt-auto pt-2">
+                                <span class="fw-bold text-primary">৳${price.toLocaleString()}</span>
+                                ${old > price ? `<small class="text-muted text-decoration-line-through ms-2">৳${old.toLocaleString()}</small>` : ''}
+                            </div>
+                                <a href="/Product/${p.slug}" class="btn btn-outline-primary btn-sm mt-2 w-100">বিবরণ দেখুন</a>
+                                <button class="btn btn-primary btn-sm mt-1 w-100" onclick='CartManager.addToCartAndCheckout(${JSON.stringify(p).replace(/'/g, "\\'")})'>অর্ডার করুন</button>
+                            </div>
+                        </div>
+                    </div>`);
+        });
+    }
+
+    function applyFilters() {
+        let filtered = [...allProducts];
+        const min = parseFloat(document.getElementById('priceMin').value) || 0;
+        const max = parseFloat(document.getElementById('priceMax').value) || Infinity;
+        const sort = document.getElementById('sortBy').value;
+
+        filtered = filtered.filter(p => {
+            const price = p.salePrice ?? p.regularPrice ?? 0;
+            return price >= min && price <= max;
+        });
+
+        if (sort === 'price_asc') filtered.sort((a, b) => (a.salePrice??0) - (b.salePrice??0));
+        else if (sort === 'price_desc') filtered.sort((a, b) => (b.salePrice??0) - (a.salePrice??0));
+        else if (sort === 'newest') filtered.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        renderProducts(filtered);
+    }
+</script>
+<style>
+    .hover-lift { transition: transform 0.2s ease, box-shadow 0.2s ease; }
+    .hover-lift:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important; }
+</style>
+}

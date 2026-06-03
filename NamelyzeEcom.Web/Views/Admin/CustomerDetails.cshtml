@@ -1,0 +1,73 @@
+@{
+    ViewData["Title"] = "Customer Details";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Customer: Imran Ahmed</h3>
+        <p class="text-muted small">Member since June 2026</p>
+    </div>
+    <span class="badge bg-success-subtle text-success border px-3 py-2">Active Customer</span>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+            <h6 class="fw-bold mb-4">Personal Information</h6>
+            <div class="mb-3">
+                <label class="text-muted small d-block">Full Name</label>
+                <span class="fw-medium">Imran Ahmed</span>
+            </div>
+            <div class="mb-3">
+                <label class="text-muted small d-block">Email Address</label>
+                <span class="fw-medium">imran@example.com</span>
+            </div>
+            <div class="mb-3">
+                <label class="text-muted small d-block">Phone Number</label>
+                <span class="fw-medium">01804193796</span>
+            </div>
+            <div class="mb-0">
+                <label class="text-muted small d-block">Default Address</label>
+                <span class="fw-medium">123 North Street, Dhaka</span>
+            </div>
+        </div>
+        
+        <div class="card border-0 shadow-sm rounded-4 p-4 bg-primary text-white">
+            <h6 class="fw-bold mb-3">Total Spend</h6>
+            <h3 class="fw-bold">৳ 45,600</h3>
+            <p class="mb-0 opacity-75">12 Successful Orders</p>
+        </div>
+    </div>
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-header bg-white p-4 border-bottom">
+                <h6 class="fw-bold mb-0">Purchase History</h6>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light text-muted small text-uppercase">
+                        <tr>
+                            <th class="ps-4">Order ID</th>
+                            <th>Date</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th class="text-end pe-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="small">
+                        <tr>
+                            <td class="ps-4 fw-bold">#ORD-5542</td>
+                            <td>01 Jun 2026</td>
+                            <td>৳ 1,500</td>
+                            <td><span class="badge bg-success-subtle text-success">Delivered</span></td>
+                            <td class="text-end pe-4">
+                                <a href="/Admin/OrderDetails/5542" class="btn btn-sm btn-light border"><i class="fas fa-eye"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+@{ ViewData["Title"] = "Blog Management"; ViewData["PageId"] = "blogs"; Layout = "_AdminLayout"; }
+<div class="page-header"><div><h4><i class="fas fa-blog me-2" style="color:var(--primary)"></i>Blog Management</h4><p>Create and edit articles</p></div><button class="btn-primary-custom" onclick="openAddBlog()"><i class="fas fa-plus me-1"></i>New Article</button></div>
+<div class="a-table-wrap"><div class="table-responsive"><table class="table a-table w-100"><thead><tr><th>Preview</th><th>Title</th><th>Status</th><th>Actions</th></tr></thead><tbody id="blogTbody"></tbody></table></div></div>
+@section Scripts {
+<script>
+$(function() { AdminBase.Crud.getList('/blogs', (err, data) => { var b = $('#blogTbody'); b.empty(); data.forEach(x => b.append(`<tr><td><img src="${x.imageUrl}" width="60"></td><td><strong>${x.title}</strong></td><td>${x.isActive?AdminBase.activeBadge(true):'<span class="s-badge pending">Draft</span>'}</td><td><button class="a-btn edit"><i class="fas fa-edit"></i></button></td></tr>`)); }); });
+</script>
+}

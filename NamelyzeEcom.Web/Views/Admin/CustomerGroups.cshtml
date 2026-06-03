@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Customer Groups";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Customer Groups</h3>
+        <p class="text-muted small">Segment customers for targeted marketing and loyalty.</p>
+    </div>
+    <button class="btn btn-primary shadow-sm btn-sm px-3"><i class="fas fa-plus me-2"></i>Add Group</button>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4">
+            <h5 class="fw-bold mb-2">VIP Customers</h5>
+            <p class="text-muted small mb-3">Customers with spend > ৳ 50,000</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-primary-subtle text-primary">45 Members</span>
+                <a href="#" class="text-primary small text-decoration-none fw-bold">Manage <i class="fas fa-chevron-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4">
+            <h5 class="fw-bold mb-2">New Registrants</h5>
+            <p class="text-muted small mb-3">Registered in the last 30 days</p>
+            <div class="d-flex justify-content-between align-items-center">
+                <span class="badge bg-info-subtle text-info">120 Members</span>
+                <a href="#" class="text-primary small text-decoration-none fw-bold">Manage <i class="fas fa-chevron-right ms-1"></i></a>
+            </div>
+        </div>
+    </div>
+</div>

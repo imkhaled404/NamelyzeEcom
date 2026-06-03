@@ -1,0 +1,74 @@
+@{
+    ViewData["Title"] = "অর্ডার ট্র্যাক করুন";
+    Layout = "_Layout";
+}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-primary text-white p-4 text-center">
+                    <i class="fas fa-truck-fast fs-1 mb-2"></i>
+                    <h3 class="fw-bold mb-0">অর্ডার ট্র্যাক করুন</h3>
+                    <p class="mb-0 opacity-75">আপনার ইনভয়েস আইডি এবং ফোন নম্বর দিয়ে স্ট্যাটাস দেখুন</p>
+                </div>
+                <div class="card-body p-4 p-lg-5">
+                    <form id="trackForm">
+                        <div class="mb-3">
+                            <label class="form-label fw-600">ইনভয়েস আইডি (Invoice ID)</label>
+                            <input type="text" id="invoiceId" class="form-control form-control-lg border-2" placeholder="Ex: NM-1001" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-600">ফোন নম্বর (Phone Number)</label>
+                            <input type="text" id="phoneNumber" class="form-control form-control-lg border-2" placeholder="Ex: 018XXXXXXXX" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill fw-bold py-3 shadow">
+                            <i class="fas fa-search me-2"></i> ট্রাক করুন
+                        </button>
+                    </form>
+
+                    <div id="trackResult" class="mt-5 d-none">
+                        <div class="p-4 rounded-4 bg-light text-center">
+                            <div class="spinner-border text-primary mb-3" role="status"></div>
+                            <p class="mb-0">অনুসন্ধান করা হচ্ছে...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+$(function() {
+    $('#trackForm').on('submit', function(e) {
+        e.preventDefault();
+        var inv = $('#invoiceId').val();
+        var phone = $('#phoneNumber').val();
+        var res = $('#trackResult');
+        
+        res.removeClass('d-none').html(`
+            <div class="p-4 rounded-4 bg-light text-center">
+                <div class="spinner-border text-primary mb-3" role="status"></div>
+                <p class="mb-0 font-weight-bold">অর্ডার তথ্য খোঁজা হচ্ছে...</p>
+            </div>
+        `);
+
+        // Mocking the track API for now
+        setTimeout(() => {
+            res.html(`
+                <div class="p-4 rounded-4 bg-white border shadow-sm">
+                    <h5 class="text-primary fw-bold mb-3"><i class="fas fa-check-circle me-2"></i>অর্ডারের তথ্য পাওয়া গেছে</h5>
+                    <div class="d-flex justify-content-between mb-2"><span>স্ট্যাটাস:</span> <span class="badge bg-success">ডেলিভারি পথে</span></div>
+                    <div class="d-flex justify-content-between mb-2"><span>ইনভয়েস:</span> <strong>${inv}</strong></div>
+                    <div class="d-flex justify-content-between mb-2"><span>মূল্য:</span> <strong>৳ ১,৫০০</strong></div>
+                    <hr>
+                    <div class="text-center small text-muted">আপনার অর্ডারের সর্বশেষ তথ্যের জন্য আমাদের কল করুন।</div>
+                </div>
+            `);
+        }, 1500);
+    });
+});
+</script>
+}

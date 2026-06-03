@@ -1,0 +1,8 @@
+@{ ViewData["Title"] = "Policies & Rules"; ViewData["PageId"] = "policies"; Layout = "_AdminLayout"; }
+<div class="page-header"><div><h4><i class="fas fa-file-contract me-2" style="color:var(--primary)"></i>Policies & Rules</h4><p>Manage dynamic site pages</p></div><button class="btn-primary-custom" onclick="openAddPolicy()"><i class="fas fa-plus me-1"></i>New Page</button></div>
+<div class="a-table-wrap"><div class="table-responsive"><table class="table a-table w-100"><thead><tr><th>Title</th><th>Slug</th><th>Status</th><th>Actions</th></tr></thead><tbody id="policyTbody"></tbody></table></div></div>
+@section Scripts {
+<script>
+$(function() { AdminBase.Crud.getList('/policies', (err, data) => { var b = $('#policyTbody'); b.empty(); data.forEach(p => b.append(`<tr><td><strong>${p.title}</strong></td><td><code>/${p.slug}</code></td><td>${AdminBase.activeBadge(p.isActive)}</td><td><button class="a-btn edit"><i class="fas fa-edit"></i></button></td></tr>`)); }); });
+</script>
+}

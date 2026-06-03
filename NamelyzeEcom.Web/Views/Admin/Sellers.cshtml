@@ -1,0 +1,18 @@
+@{ ViewData["Title"] = "Seller Management"; ViewData["PageId"] = "sellers"; Layout = "_AdminLayout"; }
+<div class="page-header"><div><h4><i class="fas fa-store me-2" style="color:var(--primary)"></i>Seller Management</h4><p>Manage multi-seller accounts and commissions</p></div><button class="btn-primary-custom" onclick="openAddSeller()"><i class="fas fa-plus me-1"></i>Add Seller</button></div>
+<div class="a-table-wrap">
+    <div class="a-table-head"><h6>All Sellers</h6><div class="filter-bar"><input type="text" id="sSearch" placeholder="Search seller..." oninput="filterSellers()"></div></div>
+    <div class="table-responsive"><table class="table a-table w-100"><thead><tr><th>#</th><th>Seller</th><th>Email</th><th>Commission %</th><th>Products</th><th>Status</th><th>Actions</th></tr></thead><tbody id="sellerTbody"></tbody></table></div>
+</div>
+<!-- Modal: Similar to Categories but with Seller fields -->
+@section Scripts {
+<script>
+var allSellers = [];
+$(function() { loadSellers(); });
+function loadSellers() { AdminBase.Crud.getList('/sellers', (err, data) => { allSellers = data; renderSellers(data); }); }
+function renderSellers(data) {
+    var b = $('#sellerTbody'); b.empty();
+    data.forEach((s, i) => b.append(`<tr><td>${i+1}</td><td><strong>${s.storeName||s.fullName}</strong></td><td>${s.email}</td><td>${s.commissionRate||0}%</td><td>${s.productCount||0}</td><td>${AdminBase.activeBadge(s.isActive!==false)}</td><td><button class="a-btn edit" onclick="editSeller(${s.id})"><i class="fas fa-edit"></i></button></td></tr>`));
+}
+</script>
+}

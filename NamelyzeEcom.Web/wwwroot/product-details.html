@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - NamelyzeEcom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body>
+    <header class="navbar-custom sticky-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-primary" href="/">NamelyzeEcom</a>
+                <div class="ms-auto">
+                    <a href="/" class="btn btn-outline-primary rounded-pill"><i class="fas fa-arrow-left me-1"></i> Back
+                        to Shop</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mt-5">
+        <div class="row g-5" id="productDetailContainer">
+            <!-- Spinner while loading -->
+            <div class="text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-5">
+            <h3 class="fw-bold mb-4">Related Products</h3>
+            <div class="row row-cols-1 row-cols-md-4 g-4" id="relatedProducts">
+                <!-- Loaded via AJAX -->
+            </div>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/site.js"></script>
+    <script>
+        $(document).ready(function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = urlParams.get('id') || 1;
+
+            NamelyzeEcom.ajax('/products/' + productId, 'GET', null, function (product) {
+                const container = $('#productDetailContainer');
+                container.empty();
+                container.append(`
+                        <div class="premium-card p-2 overflow-hidden position-relative">
+                            <span class="badge bg-danger position-absolute top-0 start-0 m-3 z-3">-${Math.round((product.regularPrice - product.salePrice) / product.regularPrice * 100)}% OFF</span>
+                            <div class="main-gallery-image overflow-hidden rounded-3 mb-3">
+                                <img src="https://placehold.co/600x600?text=${encodeURIComponent(product.name)}" class="img-fluid zoom-img" id="mainImg" alt="${product.name}">
+                            </div>
+                            <div class="d-flex gap-2" id="thumbnailList">
+                                <img src="https://placehold.co/100x100?text=Thumb+1" class="img-thumbnail cursor-pointer active-thumb" style="width: 80px;">
+                                <img src="https://placehold.co/100x100?text=Thumb+2" class="img-thumbnail cursor-pointer" style="width: 80px;">
+                                <img src="https://placehold.co/100x100?text=Thumb+3" class="img-thumbnail cursor-pointer" style="width: 80px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">${product.categoryName}</a></li>
+                                <li class="breadcrumb-item active">${product.brandName}</li>
+                            </ol>
+                        </nav>
+                        <h1 class="h2 fw-bold mb-3">${product.name}</h1>
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <div class="text-warning">
+                                ${'<i class="fas fa-star"></i>'.repeat(Math.round(product.averageRating))}
+                                ${'<i class="far fa-star"></i>'.repeat(5 - Math.round(product.averageRating))}
+                            </div>
+                            <span class="text-muted">(${product.totalReviews} Reviews)</span>
+                            <span class="badge ${product.stockQuantity > 0 ? 'bg-success' : 'bg-danger'}">
+                                ${product.stockQuantity > 0 ? 'In Stock' : 'Out of Stock'}
+                            </span>
+                        </div>
+                        <div class="d-flex align-items-center gap-3 mb-4">
+                            <span class="h2 fw-bold text-primary m-0">${NamelyzeEcom.formatCurrency(product.salePrice)}</span>
+                            <span class="h4 text-muted text-decoration-line-through m-0">${NamelyzeEcom.formatCurrency(product.regularPrice)}</span>
+                        </div>
+                        
+                        <!-- Variant Selection -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Select Color</label>
+                            <div class="d-flex gap-2">
+                                <div class="variant-box color-box active" style="background: black;"></div>
+                                <div class="variant-box color-box" style="background: silver;"></div>
+                                <div class="variant-box color-box" style="background: gold;"></div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Select Size (Capacity)</label>
+                            <div class="d-flex gap-2">
+                                <div class="variant-box border size-box active">128GB</div>
+                                <div class="variant-box border size-box">256GB</div>
+                                <div class="variant-box border size-box">512GB</div>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">Quantity</label>
+                            <div class="input-group" style="width: 150px;">
+                                <button class="btn btn-outline-secondary" type="button" id="minusBtn">-</button>
+                                <input type="number" class="form-control text-center" value="1" min="1" id="qtyInput">
+                                <button class="btn btn-outline-secondary" type="button" id="plusBtn">+</button>
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-3">
+                            <button class="btn btn-premium btn-lg py-3"><i class="fas fa-shopping-bag me-2"></i> Buy Now</button>
+                            <button class="btn btn-outline-success btn-lg py-3" id="whatsappOrderBtn">
+                                <i class="fab fa-whatsapp me-2"></i> Order via WhatsApp
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg py-3"><i class="fas fa-cart-plus me-2"></i> Add To Cart</button>
+                        </div>
+
+                        <ul class="list-unstyled mt-5 border-top pt-4 text-muted small">
+                            <li><i class="fas fa-check-circle text-success me-2"></i> 100% Original Product</li>
+                            <li><i class="fas fa-truck-loading text-success me-2"></i> Ships within 24 Hours</li>
+                            <li><i class="fas fa-undo text-success me-2"></i> 7 Days Refund Policy</li>
+                        </ul>
+                    </div>
+                `);
+
+                // Event handlers for dynamically added elements
+                $('#whatsappOrderBtn').on('click', () => NamelyzeEcom.openWhatsApp(product.name, product.salePrice));
+                $('#plusBtn').on('click', () => $('#qtyInput').val(parseInt($('#qtyInput').val()) + 1));
+                $('#minusBtn').on('click', () => {
+                    const val = parseInt($('#qtyInput').val());
+                    if (val > 1) $('#qtyInput').val(val - 1);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

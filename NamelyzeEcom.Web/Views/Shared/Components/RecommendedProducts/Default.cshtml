@@ -1,0 +1,61 @@
+@model IEnumerable<NamelyzeEcom.Business.DTOs.ProductDto>
+
+@if (Model != null && Model.Any())
+{
+    <section class="recommended-products py-5">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h2 class="fw-bold mb-1">Recommended for You</h2>
+                    <p class="text-muted small mb-0">Based on your browsing and purchase history.</p>
+                </div>
+                <a href="/Products" class="text-primary text-decoration-none fw-bold">View All <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+
+            <div class="row g-4">
+                @foreach (var product in Model)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="product-card card border-0 shadow-sm rounded-4 h-100 overflow-hidden position-relative">
+                            <div class="position-absolute top-0 end-0 p-3 z-3">
+                                <button class="btn btn-white btn-icon rounded-circle shadow-sm wishlist-btn" data-id="@product.Id">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                            <a href="/Product/@product.Slug" class="text-decoration-none text-dark">
+                                <div class="ratio ratio-1x1 overflow-hidden">
+                                    <img src="@(string.IsNullOrEmpty(product.MainImageUrl) ? "/images/placeholder.png" : product.MainImageUrl)" class="card-img-top object-fit-cover transition-transform" alt="@product.Name">
+                                </div>
+                                <div class="card-body p-3">
+                                    <p class="text-muted small mb-1">@product.CategoryName</p>
+                                    <h6 class="fw-bold mb-2 text-truncate">@product.Name</h6>
+                                    <div class="d-flex align-items-center gap-2 mb-2">
+                                        <h6 class="text-primary fw-bold mb-0">৳ @product.SalePrice.ToString("N0")</h6>
+                                        @if (product.RegularPrice > product.SalePrice)
+                                        {
+                                            <small class="text-muted text-decoration-line-through">৳ @product.RegularPrice.ToString("N0")</small>
+                                        }
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <div class="text-warning small">
+                                            @for (int i = 0; i < 5; i++)
+                                            {
+                                                <i class="fas fa-star @(i < 4 ? "" : "text-muted")"></i>
+                                            }
+                                        </div>
+                                        <span class="text-muted small ms-2">(12)</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="card-footer bg-white border-0 p-3 pt-0">
+                                <button class="btn btn-primary w-100 rounded-pill py-2 fw-bold shadow-sm add-to-cart" data-id="@product.Id">
+                                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

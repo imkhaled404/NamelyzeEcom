@@ -1,0 +1,213 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Dashboard</h3>
+        <p class="text-muted mb-0">Welcome back, here's what's happening today.</p>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-white border shadow-sm btn-sm px-3"><i class="fas fa-download me-2"></i>Export Report</button>
+        <button class="btn btn-primary shadow-sm btn-sm px-3"><i class="fas fa-plus me-2"></i>Add Product</button>
+    </div>
+</div>
+
+<!-- KPI Cards (Row 1) -->
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-primary-subtle text-primary"><i class="fas fa-dollar-sign"></i></div>
+            <p class="text-muted small mb-1">Total Sales</p>
+            <h4 class="fw-bold mb-0">৳ 2,45,000</h4>
+            <p class="text-success small mb-0 mt-2"><i class="fas fa-arrow-up me-1"></i>12%</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-success-subtle text-success"><i class="fas fa-chart-line"></i></div>
+            <p class="text-muted small mb-1">Today Sales</p>
+            <h4 class="fw-bold mb-0">৳ 12,500</h4>
+            <p class="text-success small mb-0 mt-2"><i class="fas fa-arrow-up me-1"></i>8%</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-info-subtle text-info"><i class="fas fa-shopping-cart"></i></div>
+            <p class="text-muted small mb-1">Total Orders</p>
+            <h4 class="fw-bold mb-0">1,254</h4>
+            <p class="text-white small mb-0 mt-2">.</p>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-warning-subtle text-warning"><i class="fas fa-clock"></i></div>
+            <p class="text-muted small mb-1">Pending Orders</p>
+            <h4 class="fw-bold mb-0">42</h4>
+            <p class="text-white small mb-0 mt-2">.</p>
+        </div>
+    </div>
+</div>
+
+<!-- KPI Cards (Row 2) -->
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-secondary-subtle text-secondary"><i class="fas fa-truck"></i></div>
+            <p class="text-muted small mb-1">Delivered Orders</p>
+            <h4 class="fw-bold mb-0">1,150</h4>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-primary-subtle text-primary"><i class="fas fa-users"></i></div>
+            <p class="text-muted small mb-1">Total Customers</p>
+            <h4 class="fw-bold mb-0">856</h4>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-info-subtle text-info"><i class="fas fa-box"></i></div>
+            <p class="text-muted small mb-1">Total Products</p>
+            <h4 class="fw-bold mb-0">120</h4>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="kpi-card">
+            <div class="kpi-icon bg-danger-subtle text-danger"><i class="fas fa-exclamation-triangle"></i></div>
+            <p class="text-muted small mb-1">Low Stock Products</p>
+            <h4 class="fw-bold mb-0">8</h4>
+        </div>
+    </div>
+</div>
+
+
+<div class="row g-4 mb-4">
+    <!-- Chart -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-bold mb-0">Revenue Overview</h5>
+                <select class="form-select form-select-sm" style="width: 120px;">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                </select>
+            </div>
+            <canvas id="revenueChart" height="120"></canvas>
+        </div>
+    </div>
+    <!-- Statistics -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 h-100">
+            <h5 class="fw-bold mb-4">Order Statistics</h5>
+            <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                    <span class="small fw-medium">Delivered</span>
+                    <span class="small text-muted">85%</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 85%"></div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                    <span class="small fw-medium">Processing</span>
+                    <span class="small text-muted">10%</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 10%"></div>
+                </div>
+            </div>
+            <div class="mb-4">
+                <div class="d-flex justify-content-between mb-1">
+                    <span class="small fw-medium">Cancelled</span>
+                    <span class="small text-muted">5%</span>
+                </div>
+                <div class="progress" style="height: 6px;">
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 5%"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Recent Orders -->
+    <div class="col-lg-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-header bg-white p-4 border-bottom d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0">Recent Orders</h5>
+                <a href="/admin/orders" class="btn btn-sm btn-light border px-3">View All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="bg-light">
+                        <tr>
+                            <th class="ps-4">Order No</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th class="text-end pe-4">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="ps-4 fw-medium">#NM-1001</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-primary text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 10px;">AK</div>
+                                    <span>Anis Khan</span>
+                                </div>
+                            </td>
+                            <td>৳ 1,500</td>
+                            <td><span class="badge rounded-pill bg-success-subtle text-success">Delivered</span></td>
+                            <td class="text-end pe-4"><button class="btn btn-sm btn-light border"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td class="ps-4 fw-medium">#NM-1002</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <div class="bg-info text-white rounded-circle me-2 d-flex align-items-center justify-content-center" style="width: 24px; height: 24px; font-size: 10px;">SM</div>
+                                    <span>Sadman Sakib</span>
+                                </div>
+                            </td>
+                            <td>৳ 2,200</td>
+                            <td><span class="badge rounded-pill bg-warning-subtle text-warning">Pending</span></td>
+                            <td class="text-end pe-4"><button class="btn btn-sm btn-light border"><i class="fas fa-eye"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    const ctx = document.getElementById('revenueChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            datasets: [{
+                label: 'Revenue',
+                data: [12000, 19000, 15000, 25000, 22000, 30000, 28000],
+                borderColor: '#ff5722',
+                backgroundColor: 'rgba(255, 87, 34, 0.1)',
+                borderWidth: 3,
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, grid: { borderDash: [5, 5] } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+</script>
+}

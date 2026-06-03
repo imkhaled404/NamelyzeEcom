@@ -1,0 +1,219 @@
+-- NamelyzeEcom Initial Database Schema
+-- Version: 1.0
+-- Target Database: SQL Server 2019+
+
+CREATE DATABASE NamelyzeEcomDb;
+GO
+
+USE NamelyzeEcomDb;
+GO
+
+-- 1. Identity Management
+CREATE TABLE Roles (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(50) NOT NULL,
+    Description NVARCHAR(255),
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Users (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    Email NVARCHAR(100) NOT NULL UNIQUE,
+    PhoneNumber NVARCHAR(20) NOT NULL UNIQUE,
+    PasswordHash NVARCHAR(MAX) NOT NULL,
+    ProfilePictureUrl NVARCHAR(MAX),
+    IsActive BIT NOT NULL DEFAULT 1,
+    RoleId INT NOT NULL FOREIGN KEY REFERENCES Roles(Id),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Permissions (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100) NOT NULL,
+    Description NVARCHAR(255),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE RolePermissions (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    RoleId INT NOT NULL FOREIGN KEY REFERENCES Roles(Id),
+    PermissionId INT NOT NULL FOREIGN KEY REFERENCES Permissions(Id),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+-- 2. Product Management
+CREATE TABLE Brands (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100) NOT NULL,
+    Slug NVARCHAR(150) NOT NULL UNIQUE,
+    Logo NVARCHAR(MAX),
+    Description NVARCHAR(MAX),
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Categories (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(100) NOT NULL,
+    Slug NVARCHAR(150) NOT NULL UNIQUE,
+    Image NVARCHAR(MAX),
+    ParentCategoryId INT FOREIGN KEY REFERENCES Categories(Id),
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Products (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Name NVARCHAR(255) NOT NULL,
+    Slug NVARCHAR(300) NOT NULL UNIQUE,
+    Description NVARCHAR(MAX),
+    SKU NVARCHAR(50) NOT NULL UNIQUE,
+    Barcode NVARCHAR(50),
+    PurchasePrice DECIMAL(18,2) NOT NULL,
+    RegularPrice DECIMAL(18,2) NOT NULL,
+    SalePrice DECIMAL(18,2) NOT NULL,
+    CurrentStock INT NOT NULL DEFAULT 0,
+    MinimumStock INT NOT NULL DEFAULT 0,
+    IsNew BIT NOT NULL DEFAULT 0,
+    IsFeatured BIT NOT NULL DEFAULT 0,
+    IsTrending BIT NOT NULL DEFAULT 0,
+    IsBestSeller BIT NOT NULL DEFAULT 0,
+    IsActive BIT NOT NULL DEFAULT 1,
+    Status INT NOT NULL DEFAULT 1,
+    CategoryId INT NOT NULL FOREIGN KEY REFERENCES Categories(Id),
+    BrandId INT FOREIGN KEY REFERENCES Brands(Id),
+    MetaTitle NVARCHAR(255),
+    MetaDescription NVARCHAR(MAX),
+    MetaKeywords NVARCHAR(MAX),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE ProductImages (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Products(Id),
+    ImageUrl NVARCHAR(MAX) NOT NULL,
+    IsMain BIT NOT NULL DEFAULT 0,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE ProductVariants (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Products(Id),
+    Color NVARCHAR(50),
+    Size NVARCHAR(50),
+    Weight NVARCHAR(50),
+    Capacity NVARCHAR(50),
+    AdditionalPrice DECIMAL(18,2) NOT NULL DEFAULT 0,
+    StockCount INT NOT NULL DEFAULT 0,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+-- 3. Order Management
+CREATE TABLE Orders (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    OrderNumber NVARCHAR(50) NOT NULL UNIQUE,
+    UserId INT NOT NULL FOREIGN KEY REFERENCES Users(Id),
+    CustomerName NVARCHAR(100) NOT NULL,
+    CustomerPhone NVARCHAR(20) NOT NULL,
+    CustomerEmail NVARCHAR(100),
+    DeliveryAddress NVARCHAR(MAX) NOT NULL,
+    District NVARCHAR(100) NOT NULL,
+    Area NVARCHAR(100) NOT NULL,
+    ShippingType NVARCHAR(50) NOT NULL,
+    ShippingCharge DECIMAL(18,2) NOT NULL DEFAULT 0,
+    TotalAmount DECIMAL(18,2) NOT NULL,
+    DiscountAmount DECIMAL(18,2) NOT NULL DEFAULT 0,
+    PayableAmount DECIMAL(18,2) NOT NULL,
+    OrderStatus INT NOT NULL DEFAULT 1,
+    PaymentStatus INT NOT NULL DEFAULT 1,
+    PaymentMethodId INT NOT NULL,
+    CouponCode NVARCHAR(50),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE OrderItems (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    OrderId INT NOT NULL FOREIGN KEY REFERENCES Orders(Id),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Products(Id),
+    Quantity INT NOT NULL,
+    UnitPrice DECIMAL(18,2) NOT NULL,
+    TotalPrice DECIMAL(18,2) NOT NULL,
+    VariantColor NVARCHAR(50),
+    VariantSize NVARCHAR(50),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+-- 4. Marketing & CMS
+CREATE TABLE Coupons (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Code NVARCHAR(50) NOT NULL UNIQUE,
+    Type INT NOT NULL,
+    Value DECIMAL(18,2) NOT NULL,
+    MinimumOrderAmount DECIMAL(18,2) NOT NULL,
+    StartDate DATETIME2 NOT NULL,
+    EndDate DATETIME2 NOT NULL,
+    UsageLimit INT,
+    UsedCount INT NOT NULL DEFAULT 0,
+    IsActive BIT NOT NULL DEFAULT 1,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Reviews (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Products(Id),
+    UserId INT NOT NULL FOREIGN KEY REFERENCES Users(Id),
+    Rating INT NOT NULL,
+    Title NVARCHAR(255),
+    Comment NVARCHAR(MAX),
+    IsApproved BIT NOT NULL DEFAULT 0,
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+-- 5. Inventory
+CREATE TABLE Inventories (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ProductId INT NOT NULL FOREIGN KEY REFERENCES Products(Id),
+    StockQuantity INT NOT NULL DEFAULT 0,
+    ReservedQuantity INT NOT NULL DEFAULT 0,
+    Location NVARCHAR(255),
+    CreatedAt DATETIME2 NOT NULL DEFAULT GETUTCDATE(),
+    UpdatedAt DATETIME2,
+    IsDeleted BIT NOT NULL DEFAULT 0
+);
+
+-- Seed Initial Data
+INSERT INTO Roles (Name, Description) VALUES ('SuperAdmin', 'System Owner');
+INSERT INTO Roles (Name, Description) VALUES ('Admin', 'Administrator');
+INSERT INTO Roles (Name, Description) VALUES ('Manager', 'Shop Manager');
+INSERT INTO Roles (Name, Description) VALUES ('Customer', 'Registered Customer');
+
+GO

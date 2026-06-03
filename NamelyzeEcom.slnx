@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="NamelyzeEcom.Business/NamelyzeEcom.Business.csproj" />
+  <Project Path="NamelyzeEcom.Common/NamelyzeEcom.Common.csproj" />
+  <Project Path="NamelyzeEcom.Data/NamelyzeEcom.Data.csproj" />
+  <Project Path="NamelyzeEcom.Web/NamelyzeEcom.Web.csproj" />
+</Solution>

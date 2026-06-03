@@ -1,0 +1,45 @@
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Order Tracking";
+}
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card bg-glass border-0 shadow-lg rounded-4 overflow-hidden">
+                <div class="card-header bg-transparent border-bottom border-light p-4">
+                    <h2 class="text-white mb-0 fw-bold">Order Tracking</h2>
+                    <p class="text-light mb-0 opacity-75">Track shipments and delivery status in real-time</p>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row g-4 mb-5">
+                        <div class="col-md-8">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-text bg-white bg-opacity-10 border-light border-opacity-25 text-white">
+                                    <i class="bi bi-search"></i>
+                                </span>
+                                <input type="text" class="form-control bg-white bg-opacity-10 border-light border-opacity-25 text-white" placeholder="Enter Order Number or Tracking ID (e.g. ORD-12345)">
+                                <button class="btn btn-primary px-5 fw-bold rounded-end-pill">Track Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Placeholder for Track Result -->
+                    <div class="p-5 text-center text-white opacity-50">
+                        <i class="bi bi-truck fs-1 mb-3 d-block"></i>
+                        <p>Enter an order number above to view real-time tracking information.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bg-glass {
+        background: rgba(255, 255, 255, 0.05) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>

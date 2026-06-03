@@ -1,0 +1,231 @@
+is_global = true
+build_property.TargetFramework = net9.0
+build_property.TargetFramework = net9.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v9.0
+build_property.RootNamespace = NamelyzeEcom.Web
+build_property.RootNamespace = NamelyzeEcom.Web
+build_property.ProjectDir = D:\Khaled-Personal\ASP\NamelyzeEcom\NamelyzeEcom.Web\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 9.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\Khaled-Personal\ASP\NamelyzeEcom\NamelyzeEcom.Web
+build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 9.0
+build_property.EnableCodeStyleSeverity = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Account/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Account/Profile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxQcm9maWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Account/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/ActivityLogs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQWN0aXZpdHlMb2dzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Banners.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmFubmVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Blog.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmxvZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Blogs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQmxvZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Brands.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQnJhbmRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Categories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2F0ZWdvcmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/ChildCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ2hpbGRDYXRlZ29yaWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Coupons.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ291cG9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/CreateProduct.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlUHJvZHVjdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/CreateUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlVXNlci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/CustomerDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/CustomerGroups.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJHcm91cHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/CustomerReports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJSZXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Customers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3VzdG9tZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/FlashSale.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRmxhc2hTYWxlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Inventory.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW52ZW50b3J5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/InventoryReports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW52ZW50b3J5UmVwb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Menus.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWVudXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Orders.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/OrderTracking.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cT3JkZXJUcmFja2luZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Permissions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGVybWlzc2lvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Policies.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUG9saWNpZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/ProductReports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdFJlcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Products.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUHJvZHVjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Reviews.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmV2aWV3cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Roles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUm9sZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/SalesReports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2FsZXNSZXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Sellers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2VsbGVycy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Settings.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU2V0dGluZ3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/SubCategories.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3ViQ2F0ZWdvcmllcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Admin/Users.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Home/Category.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXRlZ29yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Home/Checkout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDaGVja291dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Home/ProductDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9kdWN0RGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Home/Shop.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG9wLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Home/Track.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUcmFjay5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Shared/Components/RecommendedProducts/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcUmVjb21tZW5kZWRQcm9kdWN0c1xEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Shared/Components/Sidebar/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXENvbXBvbmVudHNcU2lkZWJhclxEZWZhdWx0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Khaled-Personal/ASP/NamelyzeEcom/NamelyzeEcom.Web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

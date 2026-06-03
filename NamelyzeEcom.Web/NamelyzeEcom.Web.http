@@ -1,0 +1,6 @@
+@NamelyzeEcom.Web_HostAddress = http://localhost:5032
+
+GET {{NamelyzeEcom.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

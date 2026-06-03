@@ -1,0 +1,65 @@
+@{
+    ViewData["Title"] = "Permission Matrix";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Role Permissions</h3>
+        <p class="text-muted small">Define which roles can access specific system features.</p>
+    </div>
+    <button class="btn btn-primary shadow-sm btn-sm px-4">Save Permissions</button>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-bordered align-middle mb-0">
+            <thead class="bg-light text-muted small text-uppercase">
+                <tr>
+                    <th class="ps-4" style="width: 300px;">Permission</th>
+                    <th class="text-center">Super Admin</th>
+                    <th class="text-center">Admin</th>
+                    <th class="text-center">Manager</th>
+                    <th class="text-center">Support</th>
+                </tr>
+            </thead>
+            <tbody class="small">
+                <tr>
+                    <td class="ps-4 fw-bold">Manage Products (Create/Edit/Delete)</td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked disabled></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                </tr>
+                <tr>
+                    <td class="ps-4 fw-bold">Manage Orders (Confirm/Cancel)</td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked disabled></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                </tr>
+                <tr>
+                    <td class="ps-4 fw-bold">Manage Inventory</td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked disabled></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                </tr>
+                <tr>
+                    <td class="ps-4 fw-bold">View Reports</td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked disabled></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                </tr>
+                <tr>
+                    <td class="ps-4 fw-bold">System Settings</td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input" checked disabled></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                    <td class="text-center"><input type="checkbox" class="form-check-input"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,98 @@
+@{
+    ViewData["Title"] = "Banners & Sliders";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Banners & Sliders</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="/Admin/Dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active">CMS</li>
+                <li class="breadcrumb-item active">Banners</li>
+            </ol>
+        </nav>
+    </div>
+    <button class="btn btn-primary shadow-sm btn-sm px-3" data-bs-toggle="modal" data-bs-target="#addBannerModal"><i class="fas fa-plus me-2"></i>Add Banner</button>
+</div>
+
+<div class="row g-4">
+    <!-- Slider Management -->
+    <div class="col-lg-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+            <div class="card-header bg-white p-4 border-bottom">
+                <h5 class="fw-bold mb-0">Homepage Sliders</h5>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0 text-center">
+                    <thead class="bg-light small text-uppercase">
+                        <tr>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Subtitle</th>
+                            <th>Button Link</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="small">
+                        <tr>
+                            <td><img src="/images/banners/gadgets-hero.png" class="rounded" style="width: 120px; height: 50px; object-fit: cover;"></td>
+                            <td class="fw-bold">Premium Gadgets Collection</td>
+                            <td>Get the latest tech now</td>
+                            <td><code>/Shop?cat=gadgets</code></td>
+                            <td><div class="form-check form-switch d-inline-block"><input class="form-check-input" type="checkbox" checked></div></td>
+                            <td>
+                                <button class="btn btn-sm btn-light border"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-light border text-danger"><i class="fas fa-trash"></i></button>
+                            </td>
+                        </tr>
+                        <!-- More banners... -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Banner Modal -->
+<div class="modal fade" id="addBannerModal" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header border-bottom p-4">
+                <h5 class="modal-title fw-bold">Add New Banner</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="bannerForm">
+                    <div class="row g-3">
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold">Banner Image</label>
+                            <div class="border rounded-4 p-4 text-center bg-light cursor-pointer">
+                                <i class="fas fa-cloud-upload-alt fs-2 text-muted mb-2"></i>
+                                <p class="mb-0 small text-muted">Upload high-res banner image (Suggested: 1920x600px)</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Title</label>
+                            <input type="text" class="form-control" name="Title">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Subtitle</label>
+                            <input type="text" class="form-control" name="Subtitle">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label fw-bold">Button URL</label>
+                            <input type="text" class="form-control" name="Url" placeholder="/Shop?cat=...">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-top p-4">
+                <button type="button" class="btn btn-light border px-4" data-bs-dismiss="modal">Close</button>
+                <button type="submit" form="bannerForm" class="btn btn-primary px-4 shadow">Save Banner</button>
+            </div>
+        </div>
+    </div>
+</div>

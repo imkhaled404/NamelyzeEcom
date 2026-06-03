@@ -1,0 +1,38 @@
+@{
+    ViewData["Title"] = "Activity Logs";
+    Layout = "_AdminLayout";
+}
+
+<div class="mb-4">
+    <h3 class="fw-bold mb-0">Activity Logs</h3>
+    <p class="text-muted small">Tracking administrative actions across the system.</p>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light text-muted small text-uppercase">
+                <tr>
+                    <th class="ps-4">Timestamp</th>
+                    <th>User</th>
+                    <th>Action</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody class="small">
+                <tr>
+                    <td class="ps-4 text-muted">2026-06-04 10:15 AM</td>
+                    <td class="fw-bold">Admin User</td>
+                    <td><span class="badge bg-primary-subtle text-primary">Update</span></td>
+                    <td>Updated product price for "Cotton Panjabi"</td>
+                </tr>
+                <tr>
+                    <td class="ps-4 text-muted">2026-06-04 09:45 AM</td>
+                    <td class="fw-bold">Manager</td>
+                    <td><span class="badge bg-success-subtle text-success">Login</span></td>
+                    <td>User logged into Admin Panel</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+@{ ViewData["Title"] = "Customer Management"; ViewData["PageId"] = "customers"; Layout = "_AdminLayout"; }
+<div class="page-header"><div><h4><i class="fas fa-users me-2" style="color:var(--primary)"></i>Customer Management</h4><p>View and manage registered customers</p></div></div>
+<div class="a-table-wrap">
+    <div class="a-table-head"><h6>Registered Customers</h6><div class="filter-bar"><input type="text" id="cSearch" placeholder="Search customers..." oninput="filterCust()"></div></div>
+    <div class="table-responsive"><table class="table a-table w-100"><thead><tr><th>#</th><th>Customer</th><th>Email</th><th>Phone</th><th>Total Orders</th><th>Status</th><th>Actions</th></tr></thead><tbody id="customerTbody"></tbody></table></div>
+</div>
+@section Scripts {
+<script>
+var allCust = []; $(function() { loadCustomers(); });
+function loadCustomers() { AdminBase.Crud.getList('/customers', (err, data) => { allCust = data; renderCustomers(data); }); }
+function renderCustomers(data) {
+    var b = $('#customerTbody'); b.empty();
+    data.forEach((c, i) => b.append(`<tr><td>${i+1}</td><td><strong>${c.fullName}</strong></td><td>${c.email}</td><td>${c.phone||'—'}</td><td>${c.orderCount||0}</td><td>${AdminBase.activeBadge(c.isActive!==false)}</td><td><button class="a-btn delete" title="Block" onclick="blockCust(${c.id})"><i class="fas fa-ban"></i></button></td></tr>`));
+}
+</script>
+}

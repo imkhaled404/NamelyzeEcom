@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Coupon Management";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Coupons</h3>
+        <p class="text-muted small">Manage discounts and promotional codes.</p>
+    </div>
+    <button class="btn btn-primary shadow-sm btn-sm px-3" data-bs-toggle="modal" data-bs-target="#addCouponModal"><i class="fas fa-plus me-2"></i>Create Coupon</button>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light text-muted small text-uppercase">
+                <tr>
+                    <th class="ps-4">Code</th>
+                    <th>Type</th>
+                    <th>Value</th>
+                    <th>Usage</th>
+                    <th>Expiry</th>
+                    <th class="text-end pe-4">Action</th>
+                </tr>
+            </thead>
+            <tbody class="small">
+                <tr>
+                    <td class="ps-4 fw-bold text-primary">SAVE20</td>
+                    <td>Percentage</td>
+                    <td>20%</td>
+                    <td>45 / 100</td>
+                    <td>31 Dec 2026</td>
+                    <td class="text-end pe-4">
+                        <button class="btn btn-sm btn-light border"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-light border"><i class="fas fa-trash text-danger"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Add Coupon Modal Placeholder -->
+<div class="modal fade" id="addCouponModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg rounded-4">
+            <div class="modal-header border-bottom p-4">
+                <h5 class="modal-title fw-bold">Create New Coupon</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body p-4">
+                <form id="couponForm">
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Coupon Code</label>
+                        <input type="text" class="form-control" placeholder="E.g. SUMMER10" required>
+                    </div>
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Discount Type</label>
+                            <select class="form-select">
+                                <option>Percentage</option>
+                                <option>Fixed Amount</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Value</label>
+                            <input type="number" class="form-control" placeholder="10">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">Expiry Date</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer border-top p-4">
+                <button type="submit" form="couponForm" class="btn btn-primary px-4 shadow">Save Coupon</button>
+            </div>
+        </div>
+    </div>
+</div>

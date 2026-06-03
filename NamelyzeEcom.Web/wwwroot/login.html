@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - NamelyzeEcom</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+
+<body class="bg-light d-flex align-items-center" style="min-height: 100vh;">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="text-center mb-4">
+                    <a href="/" class="h2 fw-bold text-primary text-decoration-none">NamelyzeEcom</a>
+                </div>
+                <!-- Login Card -->
+                <div class="card premium-card p-4" id="loginCard">
+                    <h3 class="fw-bold mb-4">Welcome Back</h3>
+                    <form id="loginForm">
+                        <div class="mb-3">
+                            <label class="form-label">Email or Phone Number</label>
+                            <input type="text" class="form-control py-2" id="loginEmail" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label d-flex justify-content-between">
+                                Password
+                                <a href="#" class="small text-primary text-decoration-none">Forgot?</a>
+                            </label>
+                            <input type="password" class="form-control py-2" id="loginPass" required>
+                        </div>
+                        <button type="submit" class="btn btn-premium w-100 py-2 mb-3">Login Now</button>
+                    </form>
+                    <p class="text-center text-muted m-0">Don't have an account? <a href="#" id="showRegister"
+                            class="text-primary text-decoration-none fw-bold">Register</a></p>
+                </div>
+
+                <!-- Register Card (Hidden by default) -->
+                <div class="card premium-card p-4 d-none" id="registerCard">
+                    <h3 class="fw-bold mb-4">Create Account</h3>
+                    <form id="registerForm">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control py-2" id="regFirstName" required>
+                            </div>
+                            <div class="col-6">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control py-2" id="regLastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-control py-2" id="regEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control py-2" id="regPhone" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Password</label>
+                            <input type="password" class="form-control py-2" id="regPass" required>
+                        </div>
+                        <button type="submit" class="btn btn-premium w-100 py-2 mb-3">Register Account</button>
+                    </form>
+                    <p class="text-center text-muted m-0">Already have an account? <a href="#" id="showLogin"
+                            class="text-primary text-decoration-none fw-bold">Login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="/js/site.js"></script>
+    <script>
+        $('#showRegister').on('click', () => {
+            $('#loginCard').addClass('d-none');
+            $('#registerCard').removeClass('d-none');
+        });
+        $('#showLogin').on('click', () => {
+            $('#registerCard').addClass('d-none');
+            $('#loginCard').removeClass('d-none');
+        });
+
+        $('#loginForm').on('submit', function (e) {
+            e.preventDefault();
+            const data = {
+                emailOrPhone: $('#loginEmail').val(),
+                password: $('#loginPass').val()
+            };
+            NamelyzeEcom.ajax('/auth/login', 'POST', data, function (tokenData) {
+                NamelyzeEcom.setToken(tokenData.token);
+                NamelyzeEcom.toast('Success', 'Welcome back!', 'success');
+                setTimeout(() => window.location.href = '/', 1500);
+            });
+        });
+
+        $('#registerForm').on('submit', function (e) {
+            e.preventDefault();
+            const data = {
+                firstName: $('#regFirstName').val(),
+                lastName: $('#regLastName').val(),
+                email: $('#regEmail').val(),
+                phoneNumber: $('#regPhone').val(),
+                password: $('#regPass').val(),
+                confirmPassword: $('#regPass').val()
+            };
+            NamelyzeEcom.ajax('/auth/register', 'POST', data, function () {
+                NamelyzeEcom.toast('Success', 'Account created! Please login.', 'success');
+                $('#showLogin').click();
+            });
+        });
+    </script>
+</body>
+
+</html>

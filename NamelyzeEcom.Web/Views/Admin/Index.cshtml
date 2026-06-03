@@ -1,0 +1,217 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["PageId"] = "dashboard";
+    Layout = "_AdminLayout";
+}
+
+<!-- Today Badge -->
+<div class="today-badge mb-4">
+    <i class="fas fa-calendar-day me-2"></i>
+    <span id="todayDateStr">...</span>
+</div>
+
+<!-- KPI Cards -->
+<div class="row g-3 mb-4">
+    <div class="col-6 col-lg-3">
+        <div class="kpi-card" onclick="window.location='/Admin/Orders'">
+            <div class="kpi-icon" style="background:#fff3ee;color:var(--primary);">
+                <i class="fas fa-bangladeshi-taka-sign"></i>
+            </div>
+            <div>
+                <div class="kpi-label">Month Revenue</div>
+                <div class="kpi-val" id="kpiRevenue">৳ 0</div>
+                <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +12.5%</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="kpi-card" onclick="window.location='/Admin/Orders'">
+            <div class="kpi-icon" style="background:#f0fdf4;color:#22c55e;">
+                <i class="fas fa-shopping-bag"></i>
+            </div>
+            <div>
+                <div class="kpi-label">Active Orders</div>
+                <div class="kpi-val" id="kpiOrders">0</div>
+                <div class="kpi-trend up"><i class="fas fa-arrow-up"></i> +8.2%</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="kpi-card" onclick="window.location='/Admin/Orders?status=1'">
+            <div class="kpi-icon" style="background:#fffbeb;color:#f59e0b;">
+                <i class="fas fa-clock"></i>
+            </div>
+            <div>
+                <div class="kpi-label">Pending Orders</div>
+                <div class="kpi-val" id="kpiPending">0</div>
+                <div class="kpi-trend down"><i class="fas fa-info-circle"></i> Requires Action</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3">
+        <div class="kpi-card" onclick="window.location='/Admin/Products?stock=low'">
+            <div class="kpi-icon" style="background:#fff1f2;color:#ef4444;">
+                <i class="fas fa-boxes-stacked"></i>
+            </div>
+            <div>
+                <div class="kpi-label">Low Stock</div>
+                <div class="kpi-val" id="kpiStock">0</div>
+                <div class="kpi-trend down"><i class="fas fa-arrow-down"></i> Reorder Soon</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Charts Row -->
+<div class="row g-3 mb-4">
+    <div class="col-lg-8">
+        <div class="a-card h-100">
+            <div class="a-card-head">
+                <h6><i class="fas fa-chart-line me-2"></i>Sales Performance</h6>
+            </div>
+            <div class="a-card-body">
+                <canvas id="salesChart" height="280"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="a-card h-100">
+            <div class="a-card-head"><h6><i class="fas fa-chart-pie me-2"></i>Category Sales</h6></div>
+            <div class="a-card-body">
+                <canvas id="catChart" height="280"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tables Row -->
+<div class="row g-3">
+    <div class="col-lg-7">
+        <div class="a-table-wrap">
+            <div class="a-table-head">
+                <h6><i class="fas fa-clock me-2"></i>Recent Orders</h6>
+                <a href="/Admin/Orders" class="btn-primary-custom" style="padding:4px 10px;font-size:12px;">View All</a>
+            </div>
+            <div class="table-responsive">
+                <table class="table a-table">
+                    <thead>
+                        <tr>
+                            <th>Order #</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentOrdersTbody">
+                        <tr><td colspan="4" class="text-center py-4 text-muted">Loading...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="a-card">
+            <div class="a-card-head"><h6><i class="fas fa-bolt me-2"></i>Quick Actions</h6></div>
+            <div class="a-card-body">
+                <div class="row g-2">
+                    <div class="col-6">
+                        <a href="/Admin/Products?action=add" class="quick-action-btn">
+                            <i class="fas fa-plus"></i>
+                            <span>Add Product</span>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="/Admin/Coupons" class="quick-action-btn" style="background:#eff6ff;color:#3b82f6;">
+                            <i class="fas fa-ticket"></i>
+                            <span>New Coupon</span>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="/Admin/Settings" class="quick-action-btn" style="background:#f0fdf4;color:#22c55e;">
+                            <i class="fas fa-cog"></i>
+                            <span>Settings</span>
+                        </a>
+                    </div>
+                    <div class="col-6">
+                        <a href="/Admin/Banners" class="quick-action-btn" style="background:#fffbeb;color:#f59e0b;">
+                            <i class="fas fa-images"></i>
+                            <span>Update Slider</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Styles {
+<style>
+.quick-action-btn {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; padding: 20px 10px; border-radius: 12px; background: #fff3ee;
+    color: var(--primary); text-decoration: none; font-weight: 600; font-size: 13px;
+    transition: all .2s; border: 1px solid transparent;
+}
+.quick-action-btn:hover { transform: translateY(-3px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); border-color: currentColor; }
+.quick-action-btn i { font-size: 20px; }
+</style>
+}
+
+@section Scripts {
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+$(function() {
+    $('#todayDateStr').text(new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
+    initCharts();
+    loadDashboardData();
+});
+
+function initCharts() {
+    const salesCtx = document.getElementById('salesChart').getContext('2d');
+    new Chart(salesCtx, {
+        type: 'line',
+        data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Revenue',
+                data: [65000, 59000, 80000, 81000, 56000, 95000, 110000],
+                borderColor: '#FE5200', backgroundColor: 'rgba(254, 82, 0, 0.1)',
+                fill: true, tension: 0.4, borderWidth: 3
+            }]
+        },
+        options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } }
+    });
+
+    const catCtx = document.getElementById('catChart').getContext('2d');
+    new Chart(catCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Electronics', 'Clothing', 'Home', 'Beauty'],
+            datasets: [{ data: [45, 25, 20, 10], backgroundColor: ['#FE5200', '#1b1f3b', '#22c55e', '#f59e0b'], borderWidth: 0 }]
+        },
+        options: { plugins: { legend: { position: 'bottom' } }, cutout: '70%' }
+    });
+}
+
+function loadDashboardData() {
+    AdminBase.Crud.getList('/orders', function(err, data) {
+        if (err) return;
+        var recent = data.slice(0, 5);
+        var tbody = $('#recentOrdersTbody');
+        tbody.empty();
+        recent.forEach(o => {
+            tbody.append(`<tr>
+                <td><strong style="color:var(--primary)">#${o.orderNumber||o.id}</strong></td>
+                <td>${o.customerName||'Guest'}</td>
+                <td>৳ ${Number(o.totalAmount||0).toLocaleString()}</td>
+                <td>${AdminBase.statusBadge(o.orderStatus||1)}</td>
+            </tr>`);
+        });
+        $('#kpiOrders').text(data.length);
+        $('#kpiPending').text(data.filter(o => o.orderStatus == 1).length);
+        var revenue = data.reduce((acc, o) => acc + (o.totalAmount || 0), 0);
+        $('#kpiRevenue').text('৳ ' + Number(revenue).toLocaleString());
+    });
+}
+</script>
+}

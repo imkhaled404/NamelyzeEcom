@@ -1,0 +1,167 @@
+@{
+    ViewData["Title"] = "চেকআউট";
+    Layout = "_Layout";
+}
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- Billing Details -->
+        <div class="col-lg-7">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-header bg-primary text-white p-4">
+                    <h4 class="mb-0 fw-bold"><i class="fas fa-map-location-dot me-2"></i>ডেলিভারি তথ্য</h4>
+                    <p class="mb-0 small opacity-75">অর্ডার সম্পন্ন করার জন্য আপনার তথ্য দিন</p>
+                </div>
+                <div class="card-body p-4 p-lg-5">
+                    <form id="checkoutForm">
+                        <div class="row mb-4">
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label fw-600">আপনার নাম *</label>
+                                <input type="text" id="customerName" class="form-control form-control-lg border-2 shadow-none" value="@(User.Identity?.Name ?? "")" placeholder="আপনার নাম লিখুন" required>
+
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label class="form-label fw-600">মোবাইল নাম্বার *</label>
+                                <input type="text" id="customerPhone" class="form-control form-control-lg border-2 shadow-none" placeholder="১১ সংখ্যার মোবাইল নম্বর" required>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-600">আপনার ঠিকানা *</label>
+                            <textarea id="deliveryAddress" class="form-control form-control-lg border-2 shadow-none" rows="3" placeholder="বাসা/বিল্ডিং নং, এলাকা, থানা" required></textarea>
+                        </div>
+                        <div class="row mb-4">
+                            <div class="col-md-12">
+                                <label class="form-label fw-600">ডেলিভারি এরিয়া *</label>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <div class="form-check p-3 border rounded-3 text-center cursor-pointer area-select checked">
+                                            <input class="form-check-input d-none" type="radio" name="area" id="insideDhaka" value="Dhaka" checked>
+                                            <label class="form-check-label d-block w-100" for="insideDhaka">
+                                                <div class="fw-bold">ঢাকার ভিতরে</div>
+                                                <div class="text-primary fw-bold">৳ ৭০.০০</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-check p-3 border rounded-3 text-center cursor-pointer area-select">
+                                            <input class="form-check-input d-none" type="radio" name="area" id="outsideDhaka" value="Outside">
+                                            <label class="form-check-label d-block w-100" for="outsideDhaka">
+                                                <div class="fw-bold">ঢাকার বাহিরে</div>
+                                                <div class="text-primary fw-bold">৳ ১৩০.০০</div>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label fw-600">পেমেন্ট মেথড *</label>
+                            <div class="bg-light p-3 border rounded-3 text-center">
+                                <div class="fw-bold text-success"><i class="fas fa-hand-holding-dollar me-2"></i> ক্যাশ অন ডেলিভারি</div>
+                                <div class="small text-muted">পণ্য হাতে পেয়ে টাকা পরিশোধ করুন</div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg w-100 py-3 rounded-pill fw-bold shadow-lg mt-2">অর্ডার নিশ্চিত করুন</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <div class="col-lg-5">
+            <div class="card border-0 shadow-sm rounded-4 sticky-top" style="top: 100px;">
+                <div class="card-header bg-white p-4 border-bottom">
+                    <h5 class="mb-0 fw-bold">অর্ডার সামারি</h5>
+                </div>
+                <div class="card-body p-4">
+                    <div id="checkoutItems" class="mb-4">
+                        <!-- Dynamic items -->
+                        <div class="d-flex align-items-center mb-3">
+                            <img src="/images/products/white-panjabi.png" class="rounded-3 border me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0">Cotton Panjabi For Men - White</h6>
+                                <div class="small text-muted">৳ ১,৫০০ x ১</div>
+                            </div>
+                            <div class="fw-bold">৳ ১,৫০০</div>
+                        </div>
+                    </div>
+                    
+                    <div class="border-top pt-3">
+                        <div class="d-flex justify-content-between mb-2"><span>সাবটোটাল</span> <span id="subtotalDisplay">৳ 0.00</span></div>
+                        <div class="d-flex justify-content-between mb-2"><span>ডেলিভারি চার্জ</span> <span id="shippingCharge">৳ ৭০.০০</span></div>
+                        <hr>
+                        <div class="d-flex justify-content-between fw-bold fs-5 text-primary"><span>সর্বমোট</span> <span id="finalTotal">৳ ১,৫৭০.০০</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .fw-600 { font-weight: 600; }
+    .area-select { transition: all 0.2s ease; }
+    .area-select.checked { border-color: var(--primary) !important; background: var(--primary-light); }
+    .cursor-pointer { cursor: pointer; }
+</style>
+
+
+@section Scripts {
+<script>
+    function renderCheckout() {
+        const items = CartManager.get();
+        const container = $('#checkoutItems');
+        container.empty();
+        
+        if (items.length === 0) {
+            container.html('<div class="alert alert-warning">আপনার কার্ট খালি।</div>');
+            return;
+        }
+
+        items.forEach(item => {
+            container.append(`
+                <div class="d-flex align-items-center mb-3">
+                    <img src="${item.image}" class="rounded-3 border me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                    <div class="flex-grow-1">
+                        <h6 class="mb-0 text-truncate" style="max-width: 200px;">${item.name}</h6>
+                        <div class="small text-muted">৳ ${item.price.toLocaleString()} x ${item.quantity}</div>
+                    </div>
+                    <div class="fw-bold ms-2">৳ ${(item.price * item.quantity).toLocaleString()}</div>
+                    <button class="btn btn-sm text-danger ms-2" onclick="CartManager.remove(${item.id}); renderCheckout();"><i class="fas fa-trash"></i></button>
+                </div>
+            `);
+        });
+
+        const subtotal = CartManager.total();
+        const shipping = $('input[name="area"]:checked').val() === 'Dhaka' ? 70 : 130;
+        const total = subtotal + shipping;
+
+        $('#shippingCharge').text('৳ ' + shipping.toLocaleString() + '.00');
+        $('#finalTotal').text('৳ ' + total.toLocaleString() + '.00');
+        $('#subtotalDisplay').text('৳ ' + subtotal.toLocaleString() + '.00');
+    }
+
+    $('input[name="area"]').change(function() {
+        $('.area-select').removeClass('checked');
+        $(this).closest('.area-select').addClass('checked');
+        renderCheckout();
+    });
+
+    $('#checkoutForm').submit(function(e) {
+        e.preventDefault();
+        if (CartManager.count() === 0) {
+            Swal.fire('Error', 'আপনার কার্ট খালি।', 'error');
+            return;
+        }
+        Swal.fire('অভিনন্দন!', 'আপনার অর্ডারটি সফলভাবে গ্রহণ করা হয়েছে।', 'success')
+            .then(() => {
+                CartManager.clear();
+                window.location = '/';
+            });
+    });
+
+    $(document).ready(renderCheckout);
+</script>
+}

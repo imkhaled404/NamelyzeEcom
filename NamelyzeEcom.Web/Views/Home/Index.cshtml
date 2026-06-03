@@ -1,0 +1,261 @@
+@{
+    ViewData["Title"] = "সেরা অনলাইন শপিং";
+    Layout = "_Layout";
+}
+
+<main class="page-content py-0">
+    <div class="container-fluid px-0">
+        <div class="container">
+            <div class="row g-3 mt-2">
+
+                <!-- ===== LEFT SIDEBAR ===== -->
+                <div class="col-lg-3 d-none d-lg-block">
+                    <div class="sidebar-card h-100">
+                        <div class="sidebar-title"><i class="fas fa-th-large me-2"></i>সকল ক্যাটাগরি</div>
+                        <ul class="sidebar-cat-list" id="sidebarCats">
+                            <li class="text-center p-3"><div class="spinner-border spinner-border-sm text-primary"></div></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- ===== RIGHT: HERO + CONTENT ===== -->
+                <div class="col-lg-9">
+
+                    <!-- HERO SLIDER -->
+                    <div id="heroSlider" class="carousel slide mb-3 rounded-4 overflow-hidden shadow" data-bs-ride="carousel" data-bs-interval="4000">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#heroSlider" data-bs-slide-to="2"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <!-- Slide 1 -->
+                            <div class="carousel-item active">
+                                <div class="hero-slide-inner" style="background: linear-gradient(135deg, #ff5722 0%, #ff8a65 50%, #ffccbc 100%);">
+                                    <div class="hero-slide-text">
+                                        <p class="hero-badge">🔥 বিশেষ অফার</p>
+                                        <h2>গ্যাজেটস ও ইলেকট্রনিক্স</h2>
+                                        <p>সর্বোচ্চ ছাড়ে পান সেরা পণ্যগুলো</p>
+                                        <a href="/Shop?cat=2" class="btn btn-light btn-lg fw-bold rounded-pill px-4 shadow-sm mt-2">এখনই কিনুন</a>
+                                    </div>
+                                    <div class="hero-slide-icon">🎧</div>
+                                </div>
+                            </div>
+                            <!-- Slide 2 -->
+                            <div class="carousel-item">
+                                <div class="hero-slide-inner" style="background: linear-gradient(135deg, #1565c0 0%, #1e88e5 50%, #bbdefb 100%);">
+                                    <div class="hero-slide-text">
+                                        <p class="hero-badge">🏠 হোম কালেকশন</p>
+                                        <h2>হোম অ্যাপ্লায়েন্স</h2>
+                                        <p>আপনার ঘরকে করুন আরও স্মার্ট</p>
+                                        <a href="/Shop?cat=1" class="btn btn-light btn-lg fw-bold rounded-pill px-4 shadow-sm mt-2">দেখুন</a>
+                                    </div>
+                                    <div class="hero-slide-icon">🏡</div>
+                                </div>
+                            </div>
+                            <!-- Slide 3 -->
+                            <div class="carousel-item">
+                                <div class="hero-slide-inner" style="background: linear-gradient(135deg, #2e7d32 0%, #43a047 50%, #c8e6c9 100%);">
+                                    <div class="hero-slide-text">
+                                        <p class="hero-badge">👗 ফ্যাশন সেল</p>
+                                        <h2>পোশাক ও ফ্যাশন</h2>
+                                        <p>ট্রেন্ডি ও প্রিমিয়াম কালেকশন</p>
+                                        <a href="/Shop?cat=5" class="btn btn-light btn-lg fw-bold rounded-pill px-4 shadow-sm mt-2">দেখুন</a>
+                                    </div>
+                                    <div class="hero-slide-icon">👗</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#heroSlider" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#heroSlider" data-bs-slide="next">
+                            <span class="carousel-control-next-icon"></span>
+                        </button>
+                    </div>
+
+                    <!-- CATEGORY CHIPS -->
+                    <div class="category-chips-row mb-4" id="categoryChips">
+                        <div class="spinner-border spinner-border-sm text-primary m-3"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FEATURED PRODUCTS SECTION ===== -->
+        <div class="container mt-3">
+            <div class="section-header d-flex justify-content-between align-items-center mb-3">
+                <h2 class="mb-0 fw-bold"><span class="text-primary">🌟</span> Featured Products</h2>
+                <a href="/Shop?featured=true" class="btn btn-outline-primary btn-sm rounded-pill">View All <i class="fas fa-arrow-right ms-1"></i></a>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mb-4" id="featuredProductFeed"></div>
+        </div>
+
+        <!-- ===== AI RECOMMENDATIONS ===== -->
+        <div class="container mt-2">
+            @await Component.InvokeAsync("RecommendedProducts", new { limit = 4 })
+        </div>
+
+        <!-- ===== ALL PRODUCTS SECTION ===== -->
+        <div class="container mt-4">
+            <!-- Filter/Sort Bar -->
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+                <h2 class="fw-bold mb-0">সকল পণ্য</h2>
+                <div class="d-flex gap-2 flex-wrap">
+                    <button class="btn btn-sm btn-primary rounded-pill px-3 filter-btn active" data-filter="all">সব</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-filter="new">New</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-filter="trending">Trending</button>
+                    <button class="btn btn-sm btn-outline-secondary rounded-pill px-3 filter-btn" data-filter="bestseller">Best Seller</button>
+                </div>
+            </div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3 mb-5" id="mainProductFeed">
+                <div class="col-12 text-center p-5">
+                    <div class="spinner-border text-primary"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Styles {
+<style>
+/* Hero Slides */
+.hero-slide-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 3rem;
+    min-height: 280px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-slide-text { color: white; z-index: 2; }
+.hero-slide-text h2 { font-size: 2rem; font-weight: 800; margin: 0.25rem 0; }
+.hero-slide-text p { font-size: 1rem; opacity: 0.9; margin: 0; }
+.hero-badge { font-size: 0.85rem; font-weight: 700; background: rgba(255,255,255,0.25); display: inline-block; padding: 2px 12px; border-radius: 99px; margin-bottom: 8px; }
+.hero-slide-icon { font-size: 8rem; opacity: 0.3; user-select: none; position: absolute; right: 2rem; }
+
+/* Category Chips */
+.category-chips-row { display: flex; gap: 12px; flex-wrap: nowrap; overflow-x: auto; padding: 4px 0 8px; scrollbar-width: none; }
+.category-chips-row::-webkit-scrollbar { display: none; }
+.cat-chip { display: flex; flex-direction: column; align-items: center; gap: 6px; background: #fff; border: 1px solid #f0f0f0; border-radius: 12px; padding: 12px 16px; cursor: pointer; text-decoration: none; transition: all 0.2s; white-space: nowrap; min-width: 90px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+.cat-chip:hover { border-color: #ff5722; color: #ff5722; transform: translateY(-3px); box-shadow: 0 6px 20px rgba(255,87,34,0.15); }
+.cat-chip .cat-icon { font-size: 1.75rem; }
+.cat-chip span { font-size: 0.72rem; font-weight: 600; color: #555; }
+
+/* Product Cards */
+.product-card-v2 { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); transition: transform 0.22s, box-shadow 0.22s; height: 100%; display: flex; flex-direction: column; }
+.product-card-v2:hover { transform: translateY(-5px); box-shadow: 0 12px 32px rgba(0,0,0,0.13); }
+.product-card-v2 .img-area { position: relative; padding-top: 100%; background: #f8f9fa; overflow: hidden; }
+.product-card-v2 .img-area img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 8px; transition: transform 0.3s; }
+.product-card-v2:hover .img-area img { transform: scale(1.05); }
+.product-card-v2 .badge-new { position: absolute; top: 8px; left: 8px; background: #4caf50; color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.product-card-v2 .badge-hot { position: absolute; top: 8px; left: 8px; background: #ff5722; color: white; font-size: 0.65rem; padding: 2px 8px; border-radius: 99px; font-weight: 700; }
+.product-card-v2 .card-body-v2 { padding: 12px; display: flex; flex-direction: column; flex: 1; }
+.product-card-v2 .cat-tag { font-size: 0.68rem; color: #ff5722; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+.product-card-v2 .prod-name { font-size: 0.85rem; font-weight: 600; color: #222; line-height: 1.4; margin-bottom: 8px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; flex: 1; }
+.product-card-v2 .price-row { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.product-card-v2 .price-sale { font-size: 1rem; font-weight: 800; color: #ff5722; }
+.product-card-v2 .price-reg { font-size: 0.8rem; color: #999; text-decoration: line-through; }
+.product-card-v2 .discount-badge { font-size: 0.68rem; background: #fff3e0; color: #e65100; padding: 1px 6px; border-radius: 99px; font-weight: 700; }
+.product-card-v2 .btn-order-v2 { background: #ff5722; color: white; border: none; border-radius: 8px; padding: 8px; font-size: 0.8rem; font-weight: 700; cursor: pointer; width: 100%; transition: background 0.2s; }
+.product-card-v2 .btn-order-v2:hover { background: #e64a19; }
+
+/* Sidebar */
+.sidebar-cat-list li a { display: flex; align-items: center; justify-content: space-between; padding: 9px 14px; font-size: 0.875rem; color: #333; text-decoration: none; border-radius: 8px; transition: all 0.15s; }
+.sidebar-cat-list li a:hover { background: #fff3e0; color: #ff5722; }
+
+/* Filter Buttons */
+.filter-btn { transition: all 0.2s; }
+.filter-btn.active { background: #ff5722 !important; border-color: #ff5722 !important; color: white !important; }
+</style>
+}
+
+@section Scripts {
+<script>
+var allProducts = [];
+var currentFilter = 'all';
+
+$(document).ready(function () {
+
+    // ── Load Categories ──────────────────────────────────
+    $.get('/api/categories', function(res) {
+        var cats = res.data || res;
+        var icons = ['🏠','📱','🍳','🚗','👗'];
+        var sidebar = $('#sidebarCats').empty();
+        var chips = $('#categoryChips').empty();
+
+        cats.slice(0, 8).forEach(function(c, i) {
+            sidebar.append(`<li><a href="/Shop?cat=${c.id}"><span>${icons[i] || '📦'} ${c.name}</span><i class="fas fa-chevron-right text-muted small"></i></a></li>`);
+            chips.append(`<a href="/Shop?cat=${c.id}" class="cat-chip"><span class="cat-icon">${icons[i] || '📦'}</span><span>${c.name}</span></a>`);
+        });
+    });
+
+    // ── Load Featured Products ───────────────────────────
+    $.get('/api/products/featured', function(res) {
+        var data = res.data || res;
+        var container = $('#featuredProductFeed').empty();
+        if (!data || !data.length) { container.html('<p class="text-muted col-12">No featured products yet.</p>'); return; }
+        data.slice(0, 8).forEach(function(p) { container.append(buildCard(p)); });
+    });
+
+    // ── Load All Products ────────────────────────────────
+    $.get('/api/products?pageSize=40', function(res) {
+        allProducts = res.data || res;
+        renderProducts(allProducts);
+    });
+
+    // ── Filter Buttons ───────────────────────────────────
+    $(document).on('click', '.filter-btn', function() {
+        $('.filter-btn').removeClass('active btn-primary').addClass('btn-outline-secondary');
+        $(this).addClass('active btn-primary').removeClass('btn-outline-secondary');
+        currentFilter = $(this).data('filter');
+        var filtered = allProducts;
+        if (currentFilter === 'new') filtered = allProducts.filter(p => p.isNew);
+        else if (currentFilter === 'trending') filtered = allProducts.filter(p => p.isTrending);
+        else if (currentFilter === 'bestseller') filtered = allProducts.filter(p => p.isBestSeller);
+        renderProducts(filtered);
+    });
+});
+
+function renderProducts(products) {
+    var container = $('#mainProductFeed').empty();
+    if (!products || !products.length) { container.html('<p class="text-muted col-12 text-center p-4">No products found.</p>'); return; }
+    products.forEach(function(p) { container.append(buildCard(p)); });
+}
+
+function buildCard(p) {
+    var img = p.mainImageUrl || p.imageUrl || 'https://placehold.co/400x400/f8f9fa/adb5bd?text=' + encodeURIComponent(p.name);
+    var discount = p.regularPrice > p.salePrice ? Math.round((1 - p.salePrice/p.regularPrice)*100) : 0;
+    var badge = p.isNew ? '<span class="badge-new">NEW</span>' : (p.isBestSeller ? '<span class="badge-hot">HOT</span>' : (p.isTrending ? '<span class="badge-hot" style="background:#9c27b0">TREND</span>' : ''));
+    var discBadge = discount > 0 ? `<span class="discount-badge">-${discount}%</span>` : '';
+    var regPrice = p.regularPrice > p.salePrice ? `<span class="price-reg">৳ ${p.regularPrice.toLocaleString()}</span>` : '';
+    return `
+        <div class="col">
+            <div class="product-card-v2">
+                <a href="/Product/${p.slug}" class="text-decoration-none">
+                    <div class="img-area">
+                        <img src="${img}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/400x400/f8f9fa/adb5bd?text=No+Image'">
+                        ${badge}
+                    </div>
+                </a>
+                <div class="card-body-v2">
+                    <div class="cat-tag">${p.categoryName || ''}</div>
+                    <a href="/Product/${p.slug}" class="text-decoration-none">
+                        <div class="prod-name">${p.name}</div>
+                    </a>
+                    <div class="price-row">
+                        <span class="price-sale">৳ ${p.salePrice.toLocaleString()}</span>
+                        ${regPrice}
+                        ${discBadge}
+                    </div>
+                    <button class="btn-order-v2" onclick="window.location='/Product/${p.slug}'">
+                        <i class="fas fa-shopping-bag me-1"></i> অর্ডার করুন
+                    </button>
+                </div>
+            </div>
+        </div>`;
+}
+</script>
+}

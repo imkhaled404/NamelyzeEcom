@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "q3GYFGvtPwg=",
+  "success": true,
+  "projectFilePath": "d:\\Khaled-Personal\\ASP\\NamelyzeEcom\\tmp_hash_gen\\tmp_hash_gen.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Administrator\\.nuget\\packages\\bcrypt.net-next\\4.2.0\\bcrypt.net-next.4.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

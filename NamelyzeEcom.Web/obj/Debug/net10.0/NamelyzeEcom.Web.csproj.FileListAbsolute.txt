@@ -1,0 +1,9 @@
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.csproj.AssemblyReference.cache
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.GeneratedMSBuildEditorConfig.editorconfig
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.AssemblyInfoInputs.cache
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.AssemblyInfo.cs
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.csproj.CoreCompileInputs.cache
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.MvcApplicationPartsAssemblyInfo.cs
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.MvcApplicationPartsAssemblyInfo.cache
+D:\Khaled-Personal\ASP\NamelyzeEcom\src\NamelyzeEcom.Web\obj\Debug\net10.0\NamelyzeEcom.Web.sourcelink.json

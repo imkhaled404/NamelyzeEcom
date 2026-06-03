@@ -1,0 +1,955 @@
+[
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Root",
+    "RelativePath": "Admin",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "ActivityLogs",
+    "RelativePath": "Admin/ActivityLogs",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Adjustment",
+    "RelativePath": "Admin/Adjustment",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Banners",
+    "RelativePath": "Admin/Banners",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Blog",
+    "RelativePath": "Admin/Blog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Brands",
+    "RelativePath": "Admin/Brands",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Categories",
+    "RelativePath": "Admin/Categories",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "ChildCategories",
+    "RelativePath": "Admin/ChildCategories",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Coupons",
+    "RelativePath": "Admin/Coupons",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CustomerDetails",
+    "RelativePath": "Admin/CustomerDetails/{id}",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CustomerGroups",
+    "RelativePath": "Admin/CustomerGroups",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Customers",
+    "RelativePath": "Admin/Customers",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Dashboard",
+    "RelativePath": "Admin/Dashboard",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "FlashSale",
+    "RelativePath": "Admin/FlashSale",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Inventory",
+    "RelativePath": "Admin/Inventory",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Login",
+    "RelativePath": "Admin/Login",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CreateMenu",
+    "RelativePath": "Admin/Menus/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Url",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Icon",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ParentMenuId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "SortOrder",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "SubMenus",
+        "Type": "System.Collections.Generic.List\u00601[[NamelyzeEcom.Business.DTOs.MenuDto, NamelyzeEcom.Business, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Orders",
+    "RelativePath": "Admin/Orders",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "OrderTracking",
+    "RelativePath": "Admin/OrderTracking",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Permissions",
+    "RelativePath": "Admin/Permissions",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Products",
+    "RelativePath": "Admin/Products",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CreateProduct",
+    "RelativePath": "Admin/Products/Create",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Purchase",
+    "RelativePath": "Admin/Purchase",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CustomerReports",
+    "RelativePath": "Admin/Reports/Customers",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "InventoryReports",
+    "RelativePath": "Admin/Reports/Inventory",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "ProductReports",
+    "RelativePath": "Admin/Reports/Products",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "SalesReports",
+    "RelativePath": "Admin/Reports/Sales",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Reviews",
+    "RelativePath": "Admin/Reviews",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Roles",
+    "RelativePath": "Admin/Roles",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CreateRole",
+    "RelativePath": "Admin/Roles/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "name",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "description",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Settings",
+    "RelativePath": "Admin/Settings",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Sliders",
+    "RelativePath": "Admin/Sliders",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Stock",
+    "RelativePath": "Admin/Stock",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "SubCategories",
+    "RelativePath": "Admin/SubCategories",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "Users",
+    "RelativePath": "Admin/Users",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CreateUser",
+    "RelativePath": "Admin/Users/Create",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.AdminController",
+    "Method": "CreateUser",
+    "RelativePath": "Admin/Users/Create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FirstName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "LastName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PhoneNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Password",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ConfirmPassword",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "roleId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.AuthController",
+    "Method": "Login",
+    "RelativePath": "api/Auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Business.DTOs.LoginUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.AuthController",
+    "Method": "GetProfile",
+    "RelativePath": "api/Auth/profile/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.AuthController",
+    "Method": "Register",
+    "RelativePath": "api/Auth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Business.DTOs.RegisterUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.CategoriesController",
+    "Method": "GetCategories",
+    "RelativePath": "api/Categories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.CategoriesController",
+    "Method": "Create",
+    "RelativePath": "api/Categories",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Business.DTOs.CategoryDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.CategoriesController",
+    "Method": "GetCategory",
+    "RelativePath": "api/Categories/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.CategoriesController",
+    "Method": "GetParentCategories",
+    "RelativePath": "api/Categories/parents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.CouponsController",
+    "Method": "GetByCode",
+    "RelativePath": "api/Coupons/code/{code}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.CouponsController",
+    "Method": "Validate",
+    "RelativePath": "api/Coupons/validate",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Web.Controllers.Api.ValidateCouponDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.MediaController",
+    "Method": "Upload",
+    "RelativePath": "api/Media/upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.OrdersController",
+    "Method": "CreateOrder",
+    "RelativePath": "api/Orders",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Business.DTOs.CreateOrderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.OrdersController",
+    "Method": "GetOrder",
+    "RelativePath": "api/Orders/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.OrdersController",
+    "Method": "UpdateStatus",
+    "RelativePath": "api/Orders/{id}/status",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.OrdersController",
+    "Method": "GetUserOrders",
+    "RelativePath": "api/Orders/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "GetProducts",
+    "RelativePath": "api/Products",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "CreateProduct",
+    "RelativePath": "api/Products",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Business.DTOs.CreateProductDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "GetProduct",
+    "RelativePath": "api/Products/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "BulkUpload",
+    "RelativePath": "api/Products/bulk-upload",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "file",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "GetFeaturedProducts",
+    "RelativePath": "api/Products/featured",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "Search",
+    "RelativePath": "api/Products/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "q",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "GetProductBySlug",
+    "RelativePath": "api/Products/slug/{slug}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ProductsController",
+    "Method": "TrackActivity",
+    "RelativePath": "api/Products/track",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ReviewsController",
+    "Method": "Create",
+    "RelativePath": "api/Reviews",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "NamelyzeEcom.Business.DTOs.CreateReviewDto",
+        "IsRequired": true
+      },
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ReviewsController",
+    "Method": "Approve",
+    "RelativePath": "api/Reviews/{id}/approve",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.Api.ReviewsController",
+    "Method": "GetProductReviews",
+    "RelativePath": "api/Reviews/product/{productId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.HomeController",
+    "Method": "Category",
+    "RelativePath": "Category/{slug}",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.HomeController",
+    "Method": "Checkout",
+    "RelativePath": "Checkout",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.HomeController",
+    "Method": "Offers",
+    "RelativePath": "Offers",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.HomeController",
+    "Method": "ProductDetail",
+    "RelativePath": "Product/{slug}",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "slug",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.SeoController",
+    "Method": "GetRobots",
+    "RelativePath": "robots.txt",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.HomeController",
+    "Method": "Shop",
+    "RelativePath": "Shop",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.SeoController",
+    "Method": "GetSitemap",
+    "RelativePath": "sitemap.xml",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "NamelyzeEcom.Web.Controllers.HomeController",
+    "Method": "Track",
+    "RelativePath": "Track",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

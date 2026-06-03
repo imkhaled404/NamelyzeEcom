@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Namelyze Admin</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff5722;
+            --secondary: #2c3e50;
+            --sidebar-width: 260px;
+            --bg-light: #f8f9fa;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            margin: 0;
+            overflow-x: hidden;
+        }
+        /* Sidebar */
+        #sidebar {
+            width: var(--sidebar-width);
+            height: 100vh;
+            position: fixed;
+            background: var(--secondary);
+            color: white;
+            transition: all 0.3s;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        #sidebar .sidebar-header {
+            padding: 20px;
+            background: rgba(0,0,0,0.1);
+        }
+        #sidebar ul.components {
+            padding: 20px 0;
+        }
+        #sidebar ul li a {
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            display: block;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: 0.3s;
+            border-left: 3px solid transparent;
+        }
+        #sidebar ul li a:hover, #sidebar ul li.active > a {
+            color: white;
+            background: rgba(255,255,255,0.05);
+            border-left-color: var(--primary);
+        }
+        #sidebar ul li a i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+        .sidebar-submenu {
+            background: rgba(0,0,0,0.15);
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar-submenu a {
+            padding-left: 52px !important;
+            font-size: 0.85rem !important;
+        }
+        /* Content */
+        #content {
+            width: calc(100% - var(--sidebar-width));
+            margin-left: var(--sidebar-width);
+            transition: all 0.3s;
+            min-height: 100vh;
+        }
+        .top-nav {
+            background: white;
+            padding: 15px 30px;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+        .main-body {
+            padding: 30px;
+        }
+        /* Widgets */
+        .kpi-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            border: 0;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: transform 0.2s;
+        }
+        .kpi-card:hover { transform: translateY(-5px); }
+        .kpi-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h4 class="mb-0 fw-bold"><i class="fas fa-shopping-bag me-2 text-primary"></i>Namelyze<span class="text-primary">Ecom</span></h4>
+                <small class="opacity-50">Admin Dashboard</small>
+            </div>
+
+            <ul class="list-unstyled components">
+                <li class="active">
+                    <a href="/admin/dashboard"><i class="fas fa-chart-line"></i> Dashboard</a>
+                </li>
+                
+                <!-- Product Management -->
+                <li>
+                    <a href="#productSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-box"></i> Product Management
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="productSubmenu">
+                        <li><a href="/admin/products">Products</a></li>
+                        <li><a href="/admin/categories">Categories</a></li>
+                        <li><a href="/admin/sub-categories">Sub Categories</a></li>
+                        <li><a href="/admin/child-categories">Child Categories</a></li>
+                        <li><a href="/admin/brands">Brands</a></li>
+                        <li><a href="/admin/reviews">Product Reviews</a></li>
+                    </ul>
+                </li>
+
+                <!-- Inventory -->
+                <li>
+                    <a href="#inventorySubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-warehouse"></i> Inventory
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="inventorySubmenu">
+                        <li><a href="/admin/stock">Stock Management</a></li>
+                        <li><a href="/admin/purchase">Purchase Entry</a></li>
+                        <li><a href="/admin/adjustment">Stock Adjustment</a></li>
+                        <li><a href="/admin/inventory">Stock Report</a></li>
+                    </ul>
+                </li>
+
+                <!-- Orders -->
+                <li>
+                    <a href="#orderSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-shopping-cart"></i> Orders
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="orderSubmenu">
+                        <li><a href="/admin/orders">All Orders</a></li>
+                        <li><a href="/admin/orders?status=pending">Pending Orders</a></li>
+                        <li><a href="/admin/orders?status=confirmed">Confirmed Orders</a></li>
+                        <li><a href="/admin/orders?status=processing">Processing Orders</a></li>
+                        <li><a href="/admin/orders?status=packed">Packed Orders</a></li>
+                        <li><a href="/admin/orders?status=shipped">Shipped Orders</a></li>
+                        <li><a href="/admin/orders?status=delivered">Delivered Orders</a></li>
+                        <li><a href="/admin/orders?status=returned">Returned Orders</a></li>
+                        <li><a href="/admin/orders?status=cancelled">Cancelled Orders</a></li>
+                    </ul>
+                </li>
+
+                <!-- Customers -->
+                <li>
+                    <a href="#customerSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-users"></i> Customers
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="customerSubmenu">
+                        <li><a href="/admin/customers">Customer List</a></li>
+                        <li><a href="/admin/customer-groups">Customer Groups</a></li>
+                    </ul>
+                </li>
+
+                <!-- Marketing -->
+                <li>
+                    <a href="#marketingSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-bullhorn"></i> Marketing
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="marketingSubmenu">
+                        <li><a href="/admin/coupons">Coupons</a></li>
+                        <li><a href="/admin/flash-sale">Flash Sale</a></li>
+                        <li><a href="/admin/campaigns">Campaigns</a></li>
+                        <li><a href="/admin/popups">Popup Offers</a></li>
+                    </ul>
+                </li>
+
+                <!-- CMS -->
+                <li>
+                    <a href="#cmsSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-window-maximize"></i> CMS
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="cmsSubmenu">
+                        <li><a href="/admin/banners">Banners</a></li>
+                        <li><a href="/admin/sliders">Sliders</a></li>
+                        <li><a href="/admin/pages">Pages</a></li>
+                        <li><a href="/admin/blog">Blog</a></li>
+                    </ul>
+                </li>
+
+                <!-- Reports -->
+                <li>
+                    <a href="#reportsSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-file-invoice-dollar"></i> Reports
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="reportsSubmenu">
+                        <li><a href="/admin/reports/sales">Sales Report</a></li>
+                        <li><a href="/admin/reports/products">Product Report</a></li>
+                        <li><a href="/admin/reports/inventory">Inventory Report</a></li>
+                        <li><a href="/admin/reports/customers">Customer Report</a></li>
+                    </ul>
+                </li>
+
+                <!-- Settings -->
+                <li>
+                    <a href="#settingsSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="settingsSubmenu">
+                        <li><a href="/admin/settings">General Settings</a></li>
+                        <li><a href="/admin/settings/payment">Payment Settings</a></li>
+                        <li><a href="/admin/settings/courier">Courier Settings</a></li>
+                        <li><a href="/admin/settings/sms">SMS Settings</a></li>
+                        <li><a href="/admin/settings/email">Email Settings</a></li>
+                        <li><a href="/admin/settings/seo">SEO Settings</a></li>
+                    </ul>
+                </li>
+
+                <!-- Administration -->
+                <li>
+                    <a href="#adminSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-shield"></i> Administration
+                    </a>
+                    <ul class="collapse list-unstyled sidebar-submenu" id="adminSubmenu">
+                        <li><a href="/admin/users">Users</a></li>
+                        <li><a href="/admin/roles">Roles</a></li>
+                        <li><a href="/admin/permissions">Permissions</a></li>
+                        <li><a href="/admin/activity-logs">Activity Logs</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Main Content -->
+        <div id="content">
+            <nav class="top-nav d-flex justify-content-between align-items-center">
+                <button type="button" class="btn btn-sm btn-light border d-lg-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="search-box position-relative d-none d-md-block">
+                    <input type="text" class="form-control form-control-sm ps-5 border-0 bg-light" placeholder="Search anything...", style="width: 300px;">
+                    <i class="fas fa-search position-absolute top-50 translate-middle-y ms-3 text-muted"></i>
+                </div>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="dropdown">
+                        <a href="#" class="text-dark text-decoration-none dropdown-toggle d-flex align-items-center" data-bs-toggle="dropdown">
+                            <div class="avatar me-2 bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <span class="fw-medium d-none d-sm-inline">Admin</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                            <li><a class="dropdown-item" href="/Account/Profile"><i class="fas fa-user me-2"></i> Profile</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item text-danger" href="/Account/Logout"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="main-body">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

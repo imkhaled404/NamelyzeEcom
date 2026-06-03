@@ -1,0 +1,109 @@
+@{
+    ViewData["Title"] = "Orders";
+    Layout = "_AdminLayout";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h3 class="fw-bold mb-0">Orders</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb small">
+                <li class="breadcrumb-item"><a href="/Admin/Dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active">Orders</li>
+            </ol>
+        </nav>
+    </div>
+    <div class="d-flex gap-2">
+        <button class="btn btn-white border shadow-sm btn-sm px-3"><i class="fas fa-print me-2 text-primary"></i>Bulk Print Invoice</button>
+        <button class="btn btn-white border shadow-sm btn-sm px-3"><i class="fas fa-truck me-2 text-info"></i>Assign Courier</button>
+    </div>
+</div>
+
+<!-- Status Tabs -->
+<div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+    <div class="card-header bg-white p-0 border-bottom">
+        <ul class="nav nav-tabs border-0" id="orderTab" role="tablist">
+            <li class="nav-item"><a class="nav-link active px-4 py-3 fw-medium" href="#">All Orders <span class="badge bg-light text-dark ms-2">1,254</span></a></li>
+            <li class="nav-item"><a class="nav-link px-4 py-3 fw-medium" href="#">Pending <span class="badge bg-warning ms-2">42</span></a></li>
+            <li class="nav-item"><a class="nav-link px-4 py-3 fw-medium" href="#">Processing <span class="badge bg-info ms-2">15</span></a></li>
+            <li class="nav-item"><a class="nav-link px-4 py-3 fw-medium" href="#">Shipped <span class="badge bg-primary ms-2">28</span></a></li>
+            <li class="nav-item"><a class="nav-link px-4 py-3 fw-medium" href="#">Delivered <span class="badge bg-success ms-2">1,150</span></a></li>
+            <li class="nav-item"><a class="nav-link px-4 py-3 fw-medium" href="#">Cancelled <span class="badge bg-danger ms-2">12</span></a></li>
+        </ul>
+    </div>
+    <div class="card-body p-4">
+        <form class="row g-3">
+            <div class="col-md-3">
+                <input type="text" class="form-control form-control-sm" placeholder="Order ID, Phone, Customer...">
+            </div>
+            <div class="col-md-2">
+                <select class="form-select form-select-sm">
+                    <option value="">Payment Status</option>
+                    <option>Paid</option>
+                    <option>Unpaid</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-select form-select-sm">
+                    <option value="">Courier</option>
+                    <option>SteadFast</option>
+                    <option>Pathao</option>
+                    <option>RedX</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <input type="date" class="form-control form-control-sm">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary btn-sm px-3 w-100">Search</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Orders Table -->
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="bg-light text-muted small text-uppercase">
+                <tr>
+                    <th class="ps-4">Order ID</th>
+                    <th>Customer</th>
+                    <th>Items</th>
+                    <th>Total Amount</th>
+                    <th>Payment</th>
+                    <th>Status</th>
+                    <th class="text-end pe-4">Action</th>
+                </tr>
+            </thead>
+            <tbody class="small">
+                <tr>
+                    <td class="ps-4 fw-bold text-primary">#NM-1001</td>
+                    <td>
+                        <div class="fw-bold">Anis Khan</div>
+                        <div class="text-muted" style="font-size: 11px;">01804193796</div>
+                    </td>
+                    <td>2 Items</td>
+                    <td>৳ 3,700</td>
+                    <td><span class="badge bg-success-subtle text-success">Paid</span></td>
+                    <td><span class="badge rounded-pill bg-success">Delivered</span></td>
+                    <td class="text-end pe-4">
+                        <div class="btn-group shadow-none">
+                            <a href="/Admin/Orders/Details/1" class="btn btn-sm btn-light border"><i class="fas fa-eye text-primary"></i></a>
+                            <button class="btn btn-sm btn-light border"><i class="fas fa-print"></i></button>
+                        </div>
+                    </td>
+                </tr>
+                <!-- More rows... -->
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer bg-white p-4 border-top text-center text-muted small">
+        Showing top 50 recent orders. Use search for historical data.
+    </div>
+</div>
+
+<style>
+    .nav-tabs .nav-link { color: #6c757d; border: 0; border-bottom: 2px solid transparent; }
+    .nav-tabs .nav-link.active { color: var(--primary); border-bottom-color: var(--primary); background: transparent; }
+</style>

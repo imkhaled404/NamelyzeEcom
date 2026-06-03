@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "আমাদের পণ্য";
+    Layout = "_Layout";
+}
+<div class="container py-4">
+    <div class="section-header"><h2>সব পণ্য</h2></div>
+    <div class="row row-cols-2 row-cols-md-4 g-4" id="shopGrid">
+        <!-- Products load via AJAX -->
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    $.get('/api/products?pageSize=40', function(res) {
+        var data = res.data || res;
+        var container = $('#shopGrid');
+        data.forEach(p => {
+             var price = p.salePrice || p.regularPrice || 0;
+             container.append(`
+                <div class="col">
+                    <div class="card h-100 border-0 shadow-sm rounded-3">
+                        <img src="${p.mainImageUrl || 'https://placehold.co/400'}" class="card-img-top" style="height:200px;object-fit:cover;" onerror="this.src='https://placehold.co/400?text=No+Image'">
+                        <div class="card-body">
+                            <div class="fw-bold mb-1">${p.name}</div>
+                            <div class="text-primary fw-bold">৳ ${price.toLocaleString()}</div>
+                            <button class="btn btn-primary btn-sm w-100 mt-2" onclick='CartManager.addToCartAndCheckout(${JSON.stringify(p).replace(/'/g, "\\'")})'>অর্ডার করুন</button>
+                        </div>
+                    </div>
+                </div>`);
+        });
+    });
+</script>
+}
